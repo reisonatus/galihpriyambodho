@@ -3,148 +3,318 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galih Priyambodho // Software Engineer</title>
+  <title>Galih Priyambodho — Software Engineer</title>
   <link rel="stylesheet" href="assets/css/global.css">
   <style>
+    /* ── Hero ── */
     #hero {
       min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      padding-top: 72px;
+    }
+    .hero-left {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 120px 80px 80px;
-      position: relative;
-      overflow: hidden;
+      padding: 80px 60px 80px 60px;
+      border-right: 1px solid var(--border);
     }
-    .hero-bg-orb { position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; }
-    .orb1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(0,245,255,0.12) 0%, transparent 70%); top: -100px; right: -100px; animation: orbFloat 8s ease-in-out infinite; }
-    .orb2 { width: 350px; height: 350px; background: radial-gradient(circle, rgba(255,0,110,0.1) 0%, transparent 70%); bottom: 50px; left: 200px; animation: orbFloat 11s ease-in-out infinite reverse; }
-    @keyframes orbFloat { 0%, 100% { transform: translate(0,0); } 50% { transform: translate(20px,-30px); } }
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 3px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      animation: fadeUp 0.7s ease forwards;
+    }
+    .hero-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 5.5vw, 5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      color: var(--ink);
+      margin-bottom: 8px;
+      animation: fadeUp 0.7s 0.1s ease forwards;
+      opacity: 0;
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ink-mid);
+      margin-bottom: 36px;
+      animation: fadeUp 0.7s 0.2s ease forwards;
+      opacity: 0;
+    }
+    .hero-divider {
+      width: 48px; height: 1px;
+      background: var(--accent);
+      margin-bottom: 28px;
+      animation: expandW 0.8s 0.3s ease forwards;
+      transform-origin: left;
+      transform: scaleX(0);
+    }
+    @keyframes expandW { to { transform: scaleX(1); } }
+    .hero-bio {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--ink-mid);
+      font-weight: 300;
+      max-width: 440px;
+      margin-bottom: 44px;
+      animation: fadeUp 0.7s 0.35s ease forwards;
+      opacity: 0;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      animation: fadeUp 0.7s 0.45s ease forwards;
+      opacity: 0;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
-    .hero-tag { font-family: 'Share Tech Mono', monospace; font-size: 0.72rem; letter-spacing: 4px; color: var(--neon-green); text-transform: uppercase; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; animation: fadeSlideIn 0.8s ease forwards; }
-    .hero-tag::before { content: '[ '; }
-    .hero-tag::after  { content: ' ]'; }
+    /* ── Hero Right Panel ── */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 60px;
+      background: var(--bg-soft);
+      animation: fadeUp 0.8s 0.5s ease forwards;
+      opacity: 0;
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+    .stat-box {
+      background: var(--bg-card);
+      padding: 28px 24px;
+    }
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.8rem;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-num span { color: var(--accent); font-size: 1.8rem; }
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 1.5px;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+    }
 
-    .hero-name { font-family: 'Orbitron', monospace; font-size: clamp(2.8rem, 6.5vw, 5.5rem); font-weight: 900; line-height: 1; letter-spacing: -1px; color: var(--text-primary); text-transform: uppercase; animation: fadeSlideIn 0.8s 0.15s ease forwards; opacity: 0; }
-    .hero-name .glow { color: var(--neon-cyan); text-shadow: 0 0 40px var(--neon-cyan), 0 0 80px rgba(0,245,255,0.4); transition: color 0.05s, text-shadow 0.05s; }
+    .hero-stack-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 2px;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .hero-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .stack-pill {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.5px;
+      padding: 6px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--ink-mid);
+      border-radius: 20px;
+      transition: all 0.2s;
+    }
+    .stack-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
 
-    .hero-title { font-family: 'Orbitron', monospace; font-size: clamp(0.8rem, 1.8vw, 1.2rem); font-weight: 400; letter-spacing: 5px; color: var(--neon-pink); text-transform: uppercase; margin-top: 16px; text-shadow: 0 0 20px var(--neon-pink); animation: fadeSlideIn 0.8s 0.3s ease forwards; opacity: 0; }
-
-    .hero-divider { width: 200px; height: 2px; background: linear-gradient(to right, var(--neon-cyan), transparent); margin: 32px 0; animation: expandWidth 1s 0.5s ease forwards; transform-origin: left; transform: scaleX(0); }
-    @keyframes expandWidth { to { transform: scaleX(1); } }
-
-    .hero-bio { max-width: 580px; font-size: 1rem; line-height: 1.8; color: var(--text-dim); font-weight: 300; font-style: italic; animation: fadeSlideIn 0.8s 0.45s ease forwards; opacity: 0; }
-
-    .hero-cta { display: flex; gap: 20px; margin-top: 44px; animation: fadeSlideIn 0.8s 0.6s ease forwards; opacity: 0; }
-
-    .hero-stats { position: absolute; right: 80px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 28px; animation: fadeSlideIn 0.8s 0.7s ease forwards; opacity: 0; }
-    .stat-item { text-align: right; position: relative; }
-    .stat-item::after { content: ''; position: absolute; right: 0; bottom: -8px; width: 100%; height: 1px; background: linear-gradient(to left, var(--neon-cyan), transparent); opacity: 0.3; }
-    .stat-num { font-family: 'Orbitron', monospace; font-size: 2rem; font-weight: 900; color: var(--neon-cyan); text-shadow: 0 0 20px var(--neon-cyan); }
-    .stat-label { font-family: 'Share Tech Mono', monospace; font-size: 0.62rem; letter-spacing: 3px; color: var(--text-dim); text-transform: uppercase; }
-
-    .scroll-hint { position: absolute; bottom: 36px; left: 80px; display: flex; align-items: center; gap: 14px; animation: fadeSlideIn 1s 1s ease forwards; opacity: 0; }
-    .scroll-hint-line { width: 50px; height: 1px; background: rgba(0,245,255,0.3); position: relative; overflow: hidden; }
-    .scroll-hint-line::after { content: ''; position: absolute; inset: 0; background: var(--neon-cyan); animation: scanLine 1.8s ease infinite; }
-    @keyframes scanLine { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
-    .scroll-hint-text { font-family: 'Share Tech Mono', monospace; font-size: 0.6rem; letter-spacing: 3px; color: var(--text-dim); text-transform: uppercase; }
+    /* ── Quick Nav Cards ── */
+    #quick-nav {
+      padding: 0 60px 80px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .qnav-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.25s;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .qnav-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+    .qnav-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 2px;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+    }
+    .qnav-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      color: var(--ink);
+    }
+    .qnav-desc {
+      font-size: 0.82rem;
+      color: var(--ink-mid);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+    .qnav-arrow {
+      margin-top: auto;
+      padding-top: 16px;
+      font-size: 1rem;
+      color: var(--accent);
+      transition: transform 0.2s;
+    }
+    .qnav-card:hover .qnav-arrow { transform: translate(4px, -4px); }
 
     @media (max-width: 900px) {
-      #hero { padding: 100px 24px 80px; }
-      .hero-stats, .scroll-hint { display: none; }
+      #hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 80px 24px 48px; border-right: none; border-bottom: 1px solid var(--border); }
+      .hero-right { padding: 48px 24px; }
+      #quick-nav { padding: 0 24px 60px; grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
-  <div class="bg-grid"></div>
-  <div class="scanlines"></div>
   <div class="scroll-progress" id="scrollProgress"></div>
-  <div class="corner-deco corner-tl"></div>
-  <div class="corner-deco corner-tr"></div>
-  <div class="corner-deco corner-bl"></div>
-  <div class="corner-deco corner-br"></div>
 
   <nav>
-    <a href="index.html" class="nav-logo">GAL<span>//</span>IH</a>
+    <a href="index.html" class="nav-logo">Galih <span>Priyambodho</span></a>
     <div class="nav-links">
       <a href="porto/skills.html">Skills</a>
       <a href="porto/projects.html">Projects</a>
       <a href="porto/experience.html">Experience</a>
       <a href="porto/contact.html">Contact</a>
     </div>
-    <div class="nav-status">
-      <div class="status-dot"></div>
-      AVAILABLE
+    <div class="nav-badge">
+      <div class="badge-dot"></div>
+      Available
     </div>
   </nav>
 
   <main>
     <section id="hero">
-      <div class="hero-bg-orb orb1"></div>
-      <div class="hero-bg-orb orb2"></div>
 
-      <div class="hero-tag">Software Engineer &nbsp;·&nbsp; Fintech &nbsp;·&nbsp; West Java, ID</div>
-
-      <h1 class="hero-name">
-        GALIH<br>
-        <span class="glow">PRIYAMBODHO</span>
-      </h1>
-
-      <div class="hero-title">Backend Dev &nbsp;/&nbsp; .NET Core &nbsp;/&nbsp; Database Engineer</div>
-      <div class="hero-divider"></div>
-
-      <p class="hero-bio">
-        7+ years building scalable backend services, APIs, and high-volume transaction systems in the Fintech industry.
-        Specialized in C#, .NET Core, and database optimization with SQL Server &amp; PostgreSQL.
-      </p>
-
-      <div class="hero-cta">
-        <a href="porto/experience.html" class="btn-primary">View Experience</a>
-        <a href="porto/contact.html" class="btn-secondary">Contact Me</a>
-      </div>
-
-      <div class="hero-stats">
-        <div class="stat-item">
-          <div class="stat-num">7+</div>
-          <div class="stat-label">Years Experience</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">4</div>
-          <div class="stat-label">Companies</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">.NET</div>
-          <div class="stat-label">Primary Stack</div>
+      <!-- Left -->
+      <div class="hero-left">
+        <div class="hero-eyebrow">Software Engineer · West Java, ID</div>
+        <h1 class="hero-name">Galih<br><em>Priyambodho</em></h1>
+        <p class="hero-title">Backend Developer & Database Engineer</p>
+        <div class="hero-divider"></div>
+        <p class="hero-bio">
+          7+ tahun membangun sistem backend scalable, API, dan transaction processing
+          di industri Fintech. Spesialis C#, .NET Core, serta optimasi database SQL Server & PostgreSQL.
+        </p>
+        <div class="hero-cta">
+          <a href="porto/experience.html" class="btn btn-primary">Lihat Experience →</a>
+          <a href="porto/contact.html" class="btn btn-outline">Hubungi Saya</a>
         </div>
       </div>
 
-      <div class="scroll-hint">
-        <div class="scroll-hint-line"></div>
-        <span class="scroll-hint-text">Explore Portfolio</span>
+      <!-- Right -->
+      <div class="hero-right">
+        <div class="hero-stats">
+          <div class="stat-box">
+            <div class="stat-num">7<span>+</span></div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">4</div>
+            <div class="stat-label">Companies</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">.NET</div>
+            <div class="stat-label">Primary Stack</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">SQL</div>
+            <div class="stat-label">Data Expertise</div>
+          </div>
+        </div>
+
+        <div class="hero-stack-title">Tech Stack</div>
+        <div class="hero-stack">
+          <span class="stack-pill">C#</span>
+          <span class="stack-pill">.NET Core</span>
+          <span class="stack-pill">.NET Framework</span>
+          <span class="stack-pill">SQL Server</span>
+          <span class="stack-pill">PostgreSQL</span>
+          <span class="stack-pill">REST API</span>
+          <span class="stack-pill">HTML</span>
+          <span class="stack-pill">JavaScript</span>
+        </div>
       </div>
+
     </section>
+
+    <!-- Quick Nav -->
+    <div id="quick-nav">
+      <a href="porto/skills.html" class="qnav-card reveal">
+        <div class="qnav-num">01 — Skills</div>
+        <div class="qnav-title">Skill Matrix</div>
+        <div class="qnav-desc">Tech stack lengkap, kemampuan backend, database, dan web.</div>
+        <div class="qnav-arrow">↗</div>
+      </a>
+      <a href="porto/projects.html" class="qnav-card reveal">
+        <div class="qnav-num">02 — Projects</div>
+        <div class="qnav-title">Projects</div>
+        <div class="qnav-desc">Sistem dan solusi yang dibangun selama berkarir di industri Fintech.</div>
+        <div class="qnav-arrow">↗</div>
+      </a>
+      <a href="porto/experience.html" class="qnav-card reveal">
+        <div class="qnav-num">03 — Experience</div>
+        <div class="qnav-title">Work History</div>
+        <div class="qnav-desc">Perjalanan karir dari 2014 hingga sekarang di berbagai perusahaan.</div>
+        <div class="qnav-arrow">↗</div>
+      </a>
+    </div>
   </main>
 
   <footer>
-    <div class="footer-copy">© 2025 <span>Galih Priyambodho</span> // Software Engineer</div>
-    <div class="footer-version">West Java, Indonesia</div>
+    <div class="footer-copy">© 2025 <span>Galih Priyambodho</span></div>
+    <div class="footer-loc">West Java, Indonesia</div>
   </footer>
 
-  <script src="assets/js/cursor.js"></script>
-  <script src="assets/js/animations.js"></script>
-  <script>
-    const glitchEl = document.querySelector('.hero-name .glow');
-    if (glitchEl) {
-      setInterval(() => {
-        if (Math.random() < 0.15) {
-          glitchEl.style.color = '#ff006e';
-          glitchEl.style.textShadow = '3px 0 0 #00f5ff, -3px 0 0 #ff006e';
-          setTimeout(() => { glitchEl.style.color = ''; glitchEl.style.textShadow = ''; }, 80);
-        }
-      }, 3000);
-    }
-  </script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
