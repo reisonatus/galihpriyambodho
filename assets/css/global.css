@@ -1,0 +1,320 @@
+/* ═══════════════════════════════════════
+   NEXUS PORTFOLIO — global.css
+   Shared across all pages
+═══════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Share+Tech+Mono&family=Exo+2:ital,wght@0,300;0,400;1,300&display=swap');
+
+/* ── Variables ── */
+:root {
+  --neon-cyan:   #00f5ff;
+  --neon-green:  #39ff14;
+  --neon-pink:   #ff006e;
+  --neon-yellow: #ffd60a;
+  --dark-bg:     #020a12;
+  --panel-bg:    rgba(0, 20, 35, 0.85);
+  --grid-color:  rgba(0, 245, 255, 0.06);
+  --text-primary:#e0f7ff;
+  --text-dim:    rgba(180, 230, 255, 0.45);
+  --border-glow: rgba(0, 245, 255, 0.35);
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--dark-bg);
+  color: var(--text-primary);
+  font-family: 'Exo 2', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ── Custom Cursor ── */
+.cursor {
+  position: fixed;
+  width: 12px; height: 12px;
+  background: var(--neon-cyan);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s;
+  box-shadow: 0 0 15px var(--neon-cyan), 0 0 30px var(--neon-cyan);
+  mix-blend-mode: screen;
+}
+.cursor-ring {
+  position: fixed;
+  width: 36px; height: 36px;
+  border: 1px solid rgba(0, 245, 255, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.12s ease, width 0.2s, height 0.2s, border-color 0.2s;
+}
+
+/* ── Background Grid ── */
+.bg-grid {
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Scanlines ── */
+.scanlines {
+  position: fixed; inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+  animation: scanMove 8s linear infinite;
+}
+@keyframes scanMove {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0 100px; }
+}
+
+/* ── Corner HUD Decorations ── */
+.corner-deco {
+  position: fixed;
+  width: 80px; height: 80px;
+  pointer-events: none;
+  z-index: 3;
+}
+.corner-deco::before, .corner-deco::after {
+  content: '';
+  position: absolute;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 8px var(--neon-cyan);
+}
+.corner-tl { top: 16px; left: 16px; }
+.corner-tl::before { top: 0; left: 0; width: 40px; height: 2px; }
+.corner-tl::after  { top: 0; left: 0; width: 2px;  height: 40px; }
+.corner-tr { top: 16px; right: 16px; }
+.corner-tr::before { top: 0; right: 0; width: 40px; height: 2px; }
+.corner-tr::after  { top: 0; right: 0; width: 2px;  height: 40px; }
+.corner-bl { bottom: 16px; left: 16px; }
+.corner-bl::before { bottom: 0; left: 0; width: 40px; height: 2px; }
+.corner-bl::after  { bottom: 0; left: 0; width: 2px;  height: 40px; }
+.corner-br { bottom: 16px; right: 16px; }
+.corner-br::before { bottom: 0; right: 0; width: 40px; height: 2px; }
+.corner-br::after  { bottom: 0; right: 0; width: 2px;  height: 40px; }
+
+/* ── Scroll Progress Bar ── */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--neon-cyan), var(--neon-pink));
+  z-index: 200;
+  transition: width 0.05s;
+  box-shadow: 0 0 8px var(--neon-cyan);
+  width: 0%;
+}
+
+/* ── Navigation ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 48px;
+  background: linear-gradient(to bottom, rgba(2, 10, 18, 0.98), transparent);
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid rgba(0, 245, 255, 0.12);
+}
+.nav-logo {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 20px var(--neon-cyan);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--neon-pink); }
+.nav-links { display: flex; gap: 36px; }
+.nav-links a {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  text-decoration: none;
+  text-transform: uppercase;
+  position: relative;
+  transition: color 0.3s;
+}
+.nav-links a::before {
+  content: '//';
+  color: var(--neon-cyan);
+  margin-right: 6px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.nav-links a:hover,
+.nav-links a.active { color: var(--neon-cyan); }
+.nav-links a:hover::before,
+.nav-links a.active::before { opacity: 1; }
+.nav-status {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--neon-green);
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.status-dot {
+  width: 6px; height: 6px;
+  background: var(--neon-green);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+  box-shadow: 0 0 8px var(--neon-green);
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* ── Main wrapper ── */
+main {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Footer ── */
+footer {
+  padding: 32px 80px;
+  border-top: 1px solid rgba(0, 245, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.footer-copy {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+.footer-copy span { color: var(--neon-cyan); }
+.footer-version {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  color: rgba(0, 245, 255, 0.25);
+}
+
+/* ── Section Common ── */
+section {
+  padding: 100px 80px;
+  position: relative;
+}
+.section-header {
+  margin-bottom: 60px;
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+}
+.section-num {
+  font-family: 'Orbitron', monospace;
+  font-size: 5rem;
+  font-weight: 900;
+  color: rgba(0, 245, 255, 0.08);
+  line-height: 1;
+  letter-spacing: -3px;
+}
+.section-tag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 4px;
+  color: var(--neon-cyan);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.section-title {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(0,245,255,0.3), transparent);
+  margin-bottom: 10px;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  background: var(--neon-cyan);
+  color: var(--dark-bg);
+  border: none;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  cursor: none;
+  transition: all 0.25s;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 0 20px rgba(0,245,255,0.5);
+}
+.btn-primary:hover {
+  background: var(--dark-bg);
+  color: var(--neon-cyan);
+  box-shadow: 0 0 30px var(--neon-cyan), inset 0 0 0 1px var(--neon-cyan);
+}
+.btn-secondary {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  background: transparent;
+  color: var(--neon-pink);
+  border: 1px solid var(--neon-pink);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  cursor: none;
+  transition: all 0.25s;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 0 12px rgba(255,0,110,0.2);
+}
+.btn-secondary:hover {
+  background: rgba(255, 0, 110, 0.1);
+  box-shadow: 0 0 25px rgba(255, 0, 110, 0.5);
+}
+
+/* ── Animations ── */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  nav    { padding: 16px 24px; }
+  section { padding: 70px 24px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+  .section-header { flex-wrap: wrap; }
+}
