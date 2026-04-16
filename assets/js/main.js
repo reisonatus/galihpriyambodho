@@ -81,17 +81,60 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── Contact form feedback ── */
+  /* ── Contact form submission ── */
+  const form = document.getElementById('contactForm');
   const submitBtn = document.getElementById('submitBtn');
-  if (submitBtn) {
-    submitBtn.addEventListener('click', () => {
-      submitBtn.textContent = '✓  Pesan Terkirim';
-      submitBtn.style.background = '#2d6a4f';
+  const feedback = document.getElementById('formFeedback');
+
+  if (form && submitBtn) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); // Mencegah reload halaman
+      
+      // Simpan teks asli tombol
+      const originalText = submitBtn.innerHTML;
+      
+      // State loading
+      submitBtn.innerHTML = '⏳ Mengirim...';
       submitBtn.disabled = true;
+      if (feedback) feedback.textContent = '';
+      
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        
+        if (response.ok) {
+          // Sukses
+          submitBtn.innerHTML = '✓ Pesan Terkirim';
+          submitBtn.style.background = '#2d6a4f';
+          form.reset();
+          if (feedback) {
+            feedback.style.color = '#2d6a4f';
+            feedback.textContent = 'Terima kasih! Saya akan segera menghubungi Anda.';
+          }
+        } else {
+          // Error dari server
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(errorData.errors?.[0]?.message || 'Gagal mengirim pesan');
+        }
+      } catch (err) {
+        // Error jaringan / lainnya
+        submitBtn.innerHTML = '❌ Gagal';
+        submitBtn.style.background = '#c1121f';
+        if (feedback) {
+          feedback.style.color = '#c1121f';
+          feedback.textContent = err.message || 'Terjadi kesalahan. Silakan coba lagi atau kirim email langsung.';
+        }
+      }
+      
+      // Reset tombol setelah 3 detik
       setTimeout(() => {
-        submitBtn.textContent = 'Kirim Pesan →';
+        submitBtn.innerHTML = originalText;
         submitBtn.style.background = '';
         submitBtn.disabled = false;
+        if (feedback) feedback.textContent = '';
       }, 3000);
     });
   }
