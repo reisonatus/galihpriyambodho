@@ -3,7 +3,7 @@
    Clean Editorial Minimal Theme
 ═══════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@400;500&display=swap');
 
 :root {
   --bg:         #f7f5f1;
@@ -19,6 +19,11 @@
   --radius:     4px;
   --shadow:     0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
   --shadow-md:  0 2px 8px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.06);
+  /* Bayangan offset gaya cetakan — pengganti drop-shadow blur generik */
+  --shadow-print: 4px 4px 0 var(--accent-soft);
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body:    var(--font-body);
+  --font-mono:    var(--font-mono);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,7 +45,7 @@ html { scroll-behavior: smooth; font-size: 16px; }
   z-index: 300;
   background: var(--ink);
   color: var(--bg);
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -62,10 +67,16 @@ button:focus-visible {
 body {
   background: var(--bg);
   color: var(--ink);
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-body);
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.65;
   overflow-x: hidden;
+}
+
+/* Warna seleksi teks mengikuti aksen — detail kecil yang terasa dirancang */
+::selection {
+  background: var(--accent);
+  color: var(--bg);
 }
 
 /* ── Scroll Progress ── */
@@ -91,7 +102,7 @@ nav {
   transition: padding 0.3s;
 }
 .nav-logo {
-  font-family: 'DM Serif Display', serif;
+  font-family: var(--font-display);
   font-size: 1.15rem;
   color: var(--ink);
   text-decoration: none;
@@ -106,7 +117,7 @@ nav {
   align-items: center;
 }
 .nav-links a {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 1px;
   color: var(--ink-mid);
@@ -131,7 +142,7 @@ nav {
 .nav-links a[aria-current="page"]::after { width: 100%; }
 
 .nav-badge {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.62rem;
   letter-spacing: 1px;
   color: var(--green);
@@ -160,7 +171,7 @@ section {
   position: relative;
 }
 .section-label {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.65rem;
   letter-spacing: 3px;
   color: var(--accent);
@@ -179,9 +190,9 @@ section {
   opacity: 0.4;
 }
 .section-title {
-  font-family: 'DM Serif Display', serif;
+  font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 400;
+  font-weight: 500;
   color: var(--ink);
   line-height: 1.15;
   letter-spacing: -0.5px;
@@ -197,20 +208,20 @@ footer {
   align-items: center;
 }
 .footer-copy {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.65rem;
   letter-spacing: 1px;
   color: var(--ink-faint);
 }
 .footer-copy span { color: var(--accent); }
 .footer-loc {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.65rem;
   letter-spacing: 1px;
   color: var(--ink-faint);
 }
 .footer-cv {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.65rem;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -227,7 +238,7 @@ footer {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -244,8 +255,7 @@ footer {
 }
 .btn-primary:hover {
   background: var(--accent);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-print);
 }
 .btn-outline {
   background: transparent;
@@ -255,8 +265,9 @@ footer {
 .btn-outline:hover {
   border-color: var(--accent);
   color: var(--accent);
-  transform: translateY(-1px);
+  box-shadow: var(--shadow-print);
 }
+.btn:active { transform: translate(2px, 2px); box-shadow: none; }
 
 /* ── Fade-in animations ──
    Hanya disembunyikan kalau JS aktif (html.js dipasang main.js),

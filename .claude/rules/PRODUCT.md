@@ -14,7 +14,7 @@ Personal portfolio of Galih Priyambodho — Backend & Database Engineer, 7+ year
 
 ## Brand Personality
 
-Grounded, precise, understated. A senior backend engineer who lets specifics (transaction systems, EDC devices, query tuning) do the talking. Not flashy, not salesy, never inflated.
+Grounded, precise, understated. An experienced backend engineer who lets specifics (transaction systems, EDC devices, query tuning) do the talking. Not flashy, not salesy, never inflated.
 
 ## Anti-references
 
@@ -28,7 +28,7 @@ Grounded, precise, understated. A senior backend engineer who lets specifics (tr
 2. **One consistent story** — same title, same numbers, same voice on every page.
 3. **Sound like a person** — copy a human engineer would say out loud; concrete over corporate.
 4. **Content works without JS** — reveal animations enhance, never gate visibility.
-5. **Preserve the existing editorial identity** — warm paper palette, DM Serif/Sans/Mono are committed brand choices; refine, don't replace.
+5. **Preserve the existing editorial identity** — warm paper palette is a committed brand choice. Type stack (since 2026-07): Fraunces for display (replaced DM Serif Display, which is a recognizable AI-output default), DM Sans 400+ for body (never 300 — too thin to read), DM Mono for labels. Print-style offset shadows (`--shadow-print`) instead of generic blur drop-shadows; no translateY hover lifts.
 
 ## Accessibility & Inclusion
 
