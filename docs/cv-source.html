@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CV — Galih Priyambodho</title>
+<style>
+  /*
+    Sumber CV — format Eropa (tanpa foto), aman untuk ATS:
+    satu kolom, teks asli tanpa grafik/tabel, heading standar, font sistem.
+    Regenerasi PDF:
+    chrome --headless=new --print-to-pdf="docs/CV_Galih_Priyambodho.pdf" --no-pdf-header-footer "file:///.../docs/cv-source.html"
+  */
+  @page { size: A4; margin: 15mm 17mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    line-height: 1.45;
+    color: #1a1a1a;
+  }
+  h1 {
+    font-size: 20pt;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .headline {
+    font-size: 12pt;
+    font-weight: bold;
+    color: #b1521f;
+    margin: 2pt 0 6pt;
+  }
+  .contact-line { font-size: 9.5pt; color: #333; }
+  .contact-line a { color: #333; text-decoration: none; }
+  h2 {
+    font-size: 11.5pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1.5px solid #1a1a1a;
+    padding-bottom: 3pt;
+    margin: 14pt 0 8pt;
+  }
+  .job { margin-bottom: 10pt; page-break-inside: avoid; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .job-title { font-size: 10.5pt; font-weight: bold; }
+  .job-dates { font-size: 9.5pt; color: #444; white-space: nowrap; }
+  .job-org { font-size: 10pt; font-style: italic; color: #333; margin-bottom: 3pt; }
+  ul { margin: 2pt 0 0 14pt; }
+  li { margin-bottom: 2.5pt; }
+  .skill-line { margin-bottom: 4pt; }
+  .skill-line strong { display: inline; }
+  .proj { margin-bottom: 5pt; }
+  .proj strong { font-size: 10pt; }
+  .muted { color: #444; }
+</style>
+</head>
+<body>
+
+  <h1>Galih Priyambodho</h1>
+  <div class="headline">Backend &amp; Database Engineer</div>
+  <div class="contact-line">
+    Cikarang, West Java 17530, Indonesia &nbsp;|&nbsp; +62 822 1347 4860 &nbsp;|&nbsp; galih.priyambodho@outlook.com
+  </div>
+  <div class="contact-line">
+    Portfolio: galihpriyambodho.pages.dev &nbsp;|&nbsp; LinkedIn: linkedin.com/in/galih-priyambodho-5535b7b5 &nbsp;|&nbsp; GitHub: github.com/reisonatus
+  </div>
+
+  <h2>Professional Summary</h2>
+  <p>
+    Backend and database engineer with 7+ years of software engineering experience (since 2018), most of it
+    building transaction systems for Indonesian financial technology, plus a year in e-commerce. Specialised in
+    C# / .NET Core services, SQL Server and PostgreSQL performance tuning, and high-volume payment processing
+    (PPOB bill payments, bank transfers, EDC terminals). Currently leading the migration of legacy fintech
+    services to Microsoft Azure and integrating LLM-assisted workflows for technical documentation.
+  </p>
+
+  <h2>Work Experience</h2>
+
+  <div class="job">
+    <div class="job-head">
+      <span class="job-title">Senior Software Engineer</span>
+      <span class="job-dates">Dec 2022 – Present</span>
+    </div>
+    <div class="job-org">PT Arranet Indonesia Sejahtera — Jakarta, Indonesia</div>
+    <ul>
+      <li>Lead the migration of legacy fintech services to Microsoft Azure, planning staged cutovers and rollback paths for systems that cannot afford downtime.</li>
+      <li>Build and maintain .NET Core backend services processing high-volume financial transactions: PPOB bill payments, bank transfers, and wallet-to-wallet transfers.</li>
+      <li>Reduce query latency on PostgreSQL and SQL Server through indexing strategy, table partitioning, and execution-plan tuning for high-volume financial data.</li>
+      <li>Built an automated transaction engine that schedules and runs thousands of daily transaction jobs across a network of payment devices.</li>
+      <li>Modernised the backend for EDC payment terminals, improving server-side processing speed and transaction security.</li>
+      <li>Integrate LLM APIs into the team workflow to automate technical documentation and PRD drafting.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <span class="job-title">Software Engineer</span>
+      <span class="job-dates">Dec 2021 – Nov 2022</span>
+    </div>
+    <div class="job-org">Qodyra Technologies — Remote</div>
+    <ul>
+      <li>Built and maintained e-commerce backend services and APIs using C# / .NET and Laravel.</li>
+      <li>Optimised query performance and indexing for large-scale product catalogs across PostgreSQL and MongoDB.</li>
+      <li>Resolved data-flow bottlenecks between SQL and NoSQL stores, keeping catalog data consistent and reads fast under load.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <span class="job-title">Software Engineer</span>
+      <span class="job-dates">Oct 2018 – Nov 2021</span>
+    </div>
+    <div class="job-org">PT Arranet Indonesia Sejahtera — Jakarta, Indonesia</div>
+    <ul>
+      <li>Developed end-to-end fintech transaction systems on ASP.NET and .NET Core, including a national electricity payment integration.</li>
+      <li>Implemented API security with JWT and OAuth2 for bank and payment partner integrations, documented with Swagger/OpenAPI.</li>
+      <li>Maintained and modernised legacy .NET Framework modules (MVC, WCF) for integration with modern REST API standards.</li>
+      <li>Worked within an ISO 9001:2015 quality management process; introduced internal automation tools that reduced manual documentation work.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <span class="job-title">IT Engineer Trainee</span>
+      <span class="job-dates">May 2014 – Jan 2015</span>
+    </div>
+    <div class="job-org">Berca Hardayaperkasa — Jakarta, Indonesia</div>
+    <ul>
+      <li>Supported senior engineers in IT operations and troubleshooting, resolving 10+ technical tickets daily.</li>
+      <li>Helped maintain 99% uptime for internal infrastructure and streamlined daily reporting, reducing manual documentation time by about 20%.</li>
+    </ul>
+  </div>
+
+  <h2>Key Projects</h2>
+  <div class="proj"><strong>PayAja Digital Transaction Platform</strong> <span class="muted">(2023–2024, live)</span> — backend for a consumer payments app: PPOB bill payments, bank transfers, and wallet-to-wallet transfers through one integrated service. .NET Core, PostgreSQL, payment gateway integration.</div>
+  <div class="proj"><strong>Bayar-Bayar EDC Backend</strong> <span class="muted">(2024, active)</span> — modernisation of the backend behind EDC payment terminals: faster server-side processing, tighter transaction security. .NET Core.</div>
+  <div class="proj"><strong>Automated Transaction Engine</strong> <span class="muted">(2025, active)</span> — internal engine scheduling and running thousands of transaction jobs a day across a payment device network. .NET Core, C#, SQL Server.</div>
+  <div class="proj"><strong>National Utility Payment Link</strong> <span class="muted">(2022–2023, live)</span> — maintained the integration handling national electricity payments with a focus on reliability and uptime. .NET Framework.</div>
+
+  <h2>Education</h2>
+  <div class="job">
+    <div class="job-head">
+      <span class="job-title">Bachelor of Computer Science</span>
+      <span class="job-dates">2015 – 2018</span>
+    </div>
+    <div class="job-org">University of Indonesia — Depok, Indonesia</div>
+  </div>
+  <div class="job">
+    <div class="job-head">
+      <span class="job-title">Associate Degree (D3), Information Technology</span>
+      <span class="job-dates">2011 – 2014</span>
+    </div>
+    <div class="job-org">Telkom University — Bandung, Indonesia</div>
+  </div>
+
+  <h2>Technical Skills</h2>
+  <div class="skill-line"><strong>Backend:</strong> C#, .NET Core, ASP.NET Core, .NET Framework, Web API, Entity Framework Core, LINQ, MVC, WCF, WinForms, REST API design, background jobs and scheduling</div>
+  <div class="skill-line"><strong>Databases:</strong> SQL Server, T-SQL, stored procedures, indexing, query optimization, execution plans, PostgreSQL, PL/pgSQL, partitioning, MongoDB, SQL/NoSQL data consistency</div>
+  <div class="skill-line"><strong>Payments domain:</strong> payment gateway integration, PPOB billing systems, EDC terminal backends, reconciliation and data integrity, high-volume transaction processing</div>
+  <div class="skill-line"><strong>Cloud and tooling:</strong> Microsoft Azure, cloud migration, LLM integration, Swagger/OpenAPI, Git, GitHub, ISO 9001:2015 workflow, technical documentation and PRDs</div>
+  <div class="skill-line"><strong>Web:</strong> HTML, CSS, JavaScript (ES6+), Bootstrap, Laravel/PHP</div>
+
+  <h2>Languages</h2>
+  <div class="skill-line">Indonesian (native) &nbsp;|&nbsp; English (professional working proficiency)</div>
+
+  <h2>Additional Information</h2>
+  <div class="skill-line">Mentoring junior developers; leading architectural migrations to cloud-native environments. Outside work: coffee chemistry and precision brewing (French press).</div>
+
+</body>
+</html>
