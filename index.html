@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galih Priyambodho — Software Engineer</title>
+  <title>Galih Priyambodho — Backend & Database Engineer</title>
+  <meta name="description" content="Backend & database engineer in West Java, Indonesia. Seven years of .NET, SQL Server, and PostgreSQL work in fintech: payment platforms, EDC backends, transaction systems.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://galihpriyambodho.pages.dev/">
-  <meta property="og:title" content="Galih Priyambodho | Senior Full-Stack Developer">
-  <meta property="og:description" content="Portfolio of a Senior Full-Stack Developer specializing in .NET and Fintech solutions.">
-  
-  <meta property="og:image" content="https://galihpriyambodho.pages.dev/assets/og-image.png">
+  <meta property="og:title" content="Galih Priyambodho — Backend & Database Engineer">
+  <meta property="og:description" content="Seven years of .NET and SQL work in fintech: payment platforms, EDC backends, transaction systems.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23b1521f'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' fill='%23f7f5f1' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="assets/css/global.css">
   <style>
     /* ── Hero ── */
@@ -41,7 +41,7 @@
       font-size: clamp(3rem, 5.5vw, 5rem);
       font-weight: 400;
       line-height: 1.05;
-      letter-spacing: -2px;
+      letter-spacing: -0.03em;
       color: var(--ink);
       margin-bottom: 8px;
       animation: fadeUp 0.7s 0.1s ease forwards;
@@ -82,6 +82,7 @@
     }
     .hero-cta {
       display: flex;
+      flex-wrap: wrap;
       gap: 12px;
       animation: fadeUp 0.7s 0.45s ease forwards;
       opacity: 0;
@@ -101,35 +102,39 @@
       animation: fadeUp 0.8s 0.5s ease forwards;
       opacity: 0;
     }
-    .hero-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--border);
+    .hero-now {
+      background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      overflow: hidden;
+      padding: 30px 28px;
       margin-bottom: 40px;
     }
-    .stat-box {
-      background: var(--bg-card);
-      padding: 28px 24px;
-    }
-    .stat-num {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2.8rem;
-      font-weight: 400;
-      color: var(--ink);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-    .stat-num span { color: var(--accent); font-size: 1.8rem; }
-    .stat-label {
+    .hero-now-label {
       font-family: 'DM Mono', monospace;
       font-size: 0.62rem;
-      letter-spacing: 1.5px;
-      color: var(--ink-faint);
+      letter-spacing: 2px;
+      color: var(--accent);
       text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .hero-now-role {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.45rem;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .hero-now-meta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.5px;
+      color: var(--ink-faint);
+      margin: 6px 0 16px;
+    }
+    .hero-now-desc {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: var(--ink-mid);
+      font-weight: 300;
     }
 
     .hero-stack-title {
@@ -161,6 +166,31 @@
       color: var(--accent);
     }
 
+    /* ── About / Summary ── */
+    #about {
+      padding: 0 60px 96px;
+      max-width: 1020px;
+    }
+    #about h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: -0.5px;
+      margin-bottom: 24px;
+    }
+    .about-text p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--ink-mid);
+      font-weight: 300;
+      max-width: 68ch;
+      margin-bottom: 18px;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text strong { color: var(--ink); font-weight: 500; }
+    .about-text a { color: var(--accent); text-underline-offset: 3px; }
+
     /* ── Quick Nav Cards ── */
     #quick-nav {
       padding: 0 60px 80px;
@@ -184,13 +214,6 @@
       border-color: var(--accent);
       box-shadow: var(--shadow-md);
       transform: translateY(-3px);
-    }
-    .qnav-num {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 2px;
-      color: var(--ink-faint);
-      text-transform: uppercase;
     }
     .qnav-title {
       font-family: 'DM Serif Display', serif;
@@ -216,13 +239,15 @@
       #hero { grid-template-columns: 1fr; }
       .hero-left { padding: 80px 24px 48px; border-right: none; border-bottom: 1px solid var(--border); }
       .hero-right { padding: 48px 24px; }
+      #about { padding: 0 24px 72px; }
       #quick-nav { padding: 0 24px 60px; grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <div class="scroll-progress" id="scrollProgress"></div>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
   <nav>
     <a href="index.html" class="nav-logo">Galih <span>Priyambodho</span></a>
@@ -238,44 +263,37 @@
     </div>
   </nav>
 
-  <main>
+  <main id="main">
     <section id="hero">
 
       <!-- Left -->
       <div class="hero-left">
-        <div class="hero-eyebrow">Software Engineer · West Java, ID</div>
+        <div class="hero-eyebrow">Cikarang, West Java · Indonesia</div>
         <h1 class="hero-name">Galih<br><em>Priyambodho</em></h1>
-        <p class="hero-title">Backend Developer & Database Engineer</p>
+        <p class="hero-title">Backend & Database Engineer</p>
         <div class="hero-divider"></div>
         <p class="hero-bio">
-          5+ years building scalable backend systems, APIs, and transaction processing
-          in the Fintech industry. Specialist in C#, .NET Core, and SQL Server & PostgreSQL database optimization.
+          I build the parts of fintech nobody sees: payment APIs, transaction engines,
+          and the databases underneath them. Seven years in, most of my day is still
+          C#, .NET, and convincing SQL Server or PostgreSQL to go faster.
         </p>
         <div class="hero-cta">
           <a href="porto/experience.html" class="btn btn-primary">View Experience →</a>
           <a href="porto/contact.html" class="btn btn-outline">Get in Touch</a>
+          <a href="docs/CV_Galih_Priyambodho.pdf" class="btn btn-outline" download>Download CV ↓</a>
         </div>
       </div>
 
       <!-- Right -->
       <div class="hero-right">
-        <div class="hero-stats">
-          <div class="stat-box">
-            <div class="stat-num">7<span>+</span></div>
-            <div class="stat-label">Years Experience</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-num">3</div>
-            <div class="stat-label">Companies</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-num">.NET</div>
-            <div class="stat-label">Primary Stack</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-num">SQL</div>
-            <div class="stat-label">Data Expertise</div>
-          </div>
+        <div class="hero-now">
+          <div class="hero-now-label">Currently</div>
+          <div class="hero-now-role">Senior Software Engineer</div>
+          <div class="hero-now-meta">PT Arranet Indonesia Sejahtera · Dec 2022 – present</div>
+          <p class="hero-now-desc">
+            Moving legacy fintech services to Azure, building .NET Core backends for
+            transaction processing, and keeping the databases underneath them fast.
+          </p>
         </div>
 
         <div class="hero-stack-title">Tech Stack</div>
@@ -293,32 +311,61 @@
 
     </section>
 
+    <!-- About / Summary -->
+    <section id="about">
+      <h2 class="reveal">A little more background</h2>
+      <div class="about-text">
+        <p class="reveal">
+          I started in IT operations back in 2014, went back to school for a computer science
+          degree, and have spent every year since 2018 building backend systems for Indonesian
+          fintech: <strong>bill payments, bank transfers, EDC terminals</strong>, and the automation
+          that keeps thousands of daily transaction jobs running on time. Along the way there was
+          also a year in e-commerce, which taught me that a slow product catalog annoys people
+          almost as much as a failed payment.
+        </p>
+        <p class="reveal">
+          The work I care about sits below the UI. Designing APIs that payment partners can
+          integrate against without surprises. Keeping transaction data consistent when volume
+          spikes. Tuning <strong>SQL Server and PostgreSQL</strong> until the slow queries stop being
+          slow. Since late 2022 I've also led our migration to <strong>Azure</strong> and started
+          folding LLMs into the team's daily workflow, from technical documentation to PRD drafts,
+          because writing those by hand was nobody's favorite job.
+        </p>
+        <p class="reveal">
+          What I bring to a team, beyond the stack: seven years of production incidents survived,
+          an ISO 9001:2015 habit of documenting decisions before they become mysteries, and a
+          genuine preference for boring, reliable systems over clever ones. Off the clock I obsess
+          over coffee chemistry and French-press ratios, which is the same personality trait that
+          makes me tune queries nobody has complained about yet. If that sounds like the kind of
+          engineer you need, the <a href="porto/contact.html">contact page</a> is short.
+        </p>
+      </div>
+    </section>
+
     <!-- Quick Nav -->
     <div id="quick-nav">
       <a href="porto/skills.html" class="qnav-card reveal">
-        <div class="qnav-num">01 — Skills</div>
-        <div class="qnav-title">Skill Matrix</div>
-        <div class="qnav-desc">Full tech stack, backend capabilities, database, and web technologies.</div>
+        <div class="qnav-title">Skills</div>
+        <div class="qnav-desc">The stack I work with every day, and how long each tool has been in rotation.</div>
         <div class="qnav-arrow">↗</div>
       </a>
       <a href="porto/projects.html" class="qnav-card reveal">
-        <div class="qnav-num">02 — Projects</div>
         <div class="qnav-title">Projects</div>
-        <div class="qnav-desc">Systems and solutions built throughout my career in the Fintech industry.</div>
+        <div class="qnav-desc">Payment platforms, EDC backends, and the other systems I've shipped at work.</div>
         <div class="qnav-arrow">↗</div>
       </a>
       <a href="porto/experience.html" class="qnav-card reveal">
-        <div class="qnav-num">03 — Experience</div>
-        <div class="qnav-title">Work History</div>
-        <div class="qnav-desc">Career journey from 2014 to present across various companies.</div>
+        <div class="qnav-title">Experience</div>
+        <div class="qnav-desc">Where I've worked since 2014, from IT trainee to senior engineer.</div>
         <div class="qnav-arrow">↗</div>
       </a>
     </div>
   </main>
 
   <footer>
-    <div class="footer-copy">© 2025 <span>Galih Priyambodho</span></div>
-    <div class="footer-loc">West Java, Indonesia</div>
+    <div class="footer-copy">© 2026 <span>Galih Priyambodho</span></div>
+    <a href="docs/CV_Galih_Priyambodho.pdf" class="footer-cv" download>Download CV (PDF)</a>
+    <div class="footer-loc">Cikarang, West Java, Indonesia</div>
   </footer>
 
   <script src="assets/js/main.js"></script>

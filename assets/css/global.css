@@ -11,8 +11,8 @@
   --bg-card:    #ffffff;
   --ink:        #1a1814;
   --ink-mid:    #6b6760;
-  --ink-faint:  #b8b5b0;
-  --accent:     #c8602a;
+  --ink-faint:  #737067; /* kontras 4.55:1 di atas --bg, aman WCAG AA untuk label kecil */
+  --accent:     #b1521f; /* kontras 4.71:1 di atas --bg, aman untuk teks mono kecil */
   --accent-soft:#f0e4db;
   --border:     #e2dfd9;
   --green:      #2d6a4f;
@@ -23,6 +23,41 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
+
+/* ── Utilitas aksesibilitas ── */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+.skip-link {
+  position: fixed;
+  left: 16px; top: -60px;
+  z-index: 300;
+  background: var(--ink);
+  color: var(--bg);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 16px; }
+
+/* Indikator fokus keyboard yang jelas di semua elemen interaktif */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
 
 body {
   background: var(--bg);
@@ -89,9 +124,11 @@ nav {
   transition: width 0.25s;
 }
 .nav-links a:hover,
-.nav-links a.active { color: var(--accent); }
+.nav-links a.active,
+.nav-links a[aria-current="page"] { color: var(--accent); }
 .nav-links a:hover::after,
-.nav-links a.active::after { width: 100%; }
+.nav-links a.active::after,
+.nav-links a[aria-current="page"]::after { width: 100%; }
 
 .nav-badge {
   font-family: 'DM Mono', monospace;
@@ -172,6 +209,18 @@ footer {
   letter-spacing: 1px;
   color: var(--ink-faint);
 }
+.footer-cv {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.footer-cv:hover { color: var(--accent); border-color: var(--accent); }
 
 /* ── Buttons ── */
 .btn {
@@ -209,15 +258,28 @@ footer {
   transform: translateY(-1px);
 }
 
-/* ── Fade-in animations ── */
-.reveal {
+/* ── Fade-in animations ──
+   Hanya disembunyikan kalau JS aktif (html.js dipasang main.js),
+   supaya konten tetap terlihat tanpa JavaScript. */
+html.js .reveal {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
-.reveal.visible {
+html.js .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+  }
+  html.js .reveal { opacity: 1; transform: none; }
 }
 
 /* ── Responsive ── */
@@ -227,4 +289,10 @@ footer {
   footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
   .nav-links { gap: 20px; }
   .nav-badge { display: none; }
+}
+
+/* Layar sempit: nav dibiarkan wrap supaya link tidak terpotong */
+@media (max-width: 430px) {
+  nav { flex-wrap: wrap; justify-content: center; row-gap: 8px; }
+  .nav-links { width: 100%; justify-content: center; gap: 16px; }
 }

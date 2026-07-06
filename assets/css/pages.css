@@ -66,6 +66,7 @@
 .skill-group-title {
   font-family: 'DM Serif Display', serif;
   font-size: 1.4rem;
+  font-weight: 400;
   color: var(--ink);
   margin-bottom: 28px;
   padding-bottom: 14px;
@@ -90,53 +91,33 @@
 
 .skill-row {
   display: grid;
-  grid-template-columns: 200px 1fr 48px;
-  align-items: center;
-  gap: 20px;
+  grid-template-columns: 200px 1fr;
+  align-items: baseline;
+  gap: 8px 20px;
   padding: 18px 0;
   border-bottom: 1px solid var(--border);
-  transition: all 0.2s;
 }
 .skill-row:last-child { border-bottom: none; }
-.skill-row:hover .skill-bar-fill { box-shadow: 0 0 0 1px var(--accent-soft); }
 
-.skill-row-name {
+.skill-name {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.92rem;
   font-weight: 500;
   color: var(--ink);
 }
+.skill-note {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--ink-mid);
+  font-weight: 300;
+  max-width: 560px;
+}
 .skill-row-tags {
+  grid-column: 2;
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   align-items: center;
-}
-.skill-bar-wrap {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.skill-bar {
-  flex: 1;
-  height: 3px;
-  background: var(--border);
-  border-radius: 2px;
-  overflow: hidden;
-}
-.skill-bar-fill {
-  height: 100%;
-  background: var(--accent);
-  border-radius: 2px;
-  width: 0%;
-  transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
-}
-.skill-pct {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.68rem;
-  color: var(--ink-mid);
-  min-width: 34px;
-  text-align: right;
 }
 .tag {
   font-family: 'DM Mono', monospace;
@@ -151,32 +132,6 @@
 }
 
 /* ── PROJECTS PAGE ── */
-.projects-filter {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
-}
-.filter-btn {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 1px;
-  padding: 8px 16px;
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--ink-mid);
-  text-transform: uppercase;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.filter-btn:hover,
-.filter-btn.active {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: var(--bg);
-}
-
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -189,6 +144,9 @@
   padding: 32px;
   position: relative;
   transition: all 0.3s;
+}
+/* Animasi masuk hanya saat JS aktif; tanpa JS kartu tetap terlihat */
+html.js .project-card {
   opacity: 0;
   transform: translateY(16px);
 }
@@ -261,11 +219,13 @@
   padding-left: 36px;
   padding-bottom: 52px;
   position: relative;
-  opacity: 0;
-  transform: translateX(-12px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.timeline-item.visible { opacity: 1; transform: none; }
+html.js .timeline-item {
+  opacity: 0;
+  transform: translateX(-12px);
+}
+html.js .timeline-item.visible { opacity: 1; transform: none; }
 .timeline-item::before {
   content: '';
   position: absolute;
@@ -308,6 +268,13 @@
   margin-bottom: 14px;
 }
 .timeline-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.cv-line {
+  margin-top: 72px;
+  font-size: 0.92rem;
+  color: var(--ink-mid);
+  font-weight: 300;
+}
+.cv-line a { color: var(--accent); text-underline-offset: 3px; }
 
 /* ── CONTACT PAGE ── */
 .contact-grid {
@@ -337,12 +304,38 @@
 .contact-link:last-child { border-bottom: none; }
 .contact-link:hover .cl-label { color: var(--accent); }
 .contact-link:hover .cl-arrow { transform: translate(3px, -3px); }
-.cl-icon  { font-size: 1rem; width: 20px; text-align: center; color: var(--ink-faint); }
+.cl-icon  { width: 20px; text-align: center; color: var(--ink-faint); display: flex; justify-content: center; }
+.cl-icon svg { width: 16px; height: 16px; }
 .cl-label { font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; color: var(--ink); flex: 1; transition: color 0.2s; }
 .cl-val   { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--ink-mid); }
 .cl-arrow { font-size: 0.8rem; color: var(--ink-faint); transition: transform 0.2s; }
 
+.copy-email {
+  margin-top: 20px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--ink-mid);
+  padding: 9px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.copy-email:hover { border-color: var(--accent); color: var(--accent); }
+.copy-email.copied { border-color: var(--green); color: var(--green); }
+
 .contact-form { display: flex; flex-direction: column; gap: 20px; }
+.label-opt { text-transform: none; letter-spacing: 0; color: var(--ink-faint); }
+.form-alt {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--ink-mid);
+  font-weight: 300;
+}
+.form-alt a { color: var(--accent); }
 .form-group label {
   display: block;
   font-family: 'DM Mono', monospace;
@@ -370,14 +363,21 @@
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-soft);
 }
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--ink-faint); opacity: 1; }
 .form-group textarea { min-height: 140px; resize: vertical; }
 
 @media (max-width: 768px) {
   .page-banner { padding: 100px 24px 40px; }
   .skills-list .skill-row { grid-template-columns: 1fr; gap: 10px; }
+  .skill-row-tags { grid-column: 1; }
   .projects-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; gap: 48px; }
-  .timeline::before { display: none; }
-  .timeline-item { padding-left: 0; }
-  .timeline-item::before { display: none; }
+  /* Garis timeline dipertahankan di mobile, hanya dirapatkan */
+  .timeline-item { padding-left: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .project-card,
+  html.js .timeline-item { opacity: 1; transform: none; }
 }

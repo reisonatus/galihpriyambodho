@@ -2,6 +2,10 @@
    GALIH PORTFOLIO — main.js
 ═══════════════════════════════ */
 
+/* Penanda JS aktif: CSS hanya menyembunyikan elemen animasi kalau class ini ada,
+   sehingga konten tetap terlihat saat JS gagal dimuat */
+document.documentElement.classList.add('js');
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Scroll Progress ── */
@@ -13,11 +17,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  /* ── Active Nav ── */
+  /* ── Active Nav ──
+     Cadangan bila atribut statis di HTML terlewat; idempoten */
   const page = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-links a').forEach(a => {
-    if (a.getAttribute('href').split('/').pop() === page) a.classList.add('active');
+    if (a.getAttribute('href').split('/').pop() === page) {
+      a.classList.add('active');
+      a.setAttribute('aria-current', 'page');
+    }
   });
+
+  /* ── Copy email (halaman kontak) ── */
+  const copyBtn = document.getElementById('copyEmail');
+  if (copyBtn) {
+    const originalLabel = copyBtn.textContent;
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(copyBtn.dataset.email);
+        copyBtn.textContent = '✓ Copied';
+        copyBtn.classList.add('copied');
+      } catch {
+        // Clipboard API tidak tersedia (mis. non-HTTPS): tampilkan alamatnya saja
+        copyBtn.textContent = copyBtn.dataset.email;
+      }
+      setTimeout(() => {
+        copyBtn.textContent = originalLabel;
+        copyBtn.classList.remove('copied');
+      }, 2000);
+    });
+  }
 
   /* ── Generic Reveal on Scroll ── */
   const revealObs = new IntersectionObserver(entries => {
@@ -29,19 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
-  /* ── Skill Bars ── */
-  const skillObs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.querySelectorAll('.skill-bar-fill').forEach(fill => {
-          setTimeout(() => { fill.style.width = fill.dataset.pct + '%'; }, 100);
-        });
-        skillObs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
-  document.querySelectorAll('.skills-list').forEach(el => skillObs.observe(el));
 
   /* ── Timeline ── */
   const tlObs = new IntersectionObserver(entries => {
@@ -69,18 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.1 });
   document.querySelectorAll('.project-card').forEach(el => projObs.observe(el));
 
-  /* ── Project Filter ── */
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const f = btn.dataset.filter;
-      document.querySelectorAll('.project-card').forEach(card => {
-        card.style.display = (f === 'all' || card.dataset.cat === f) ? '' : 'none';
-      });
-    });
-  });
-
   /* ── Contact form submission ── */
   const form = document.getElementById('contactForm');
   const submitBtn = document.getElementById('submitBtn');
@@ -89,53 +92,63 @@ document.addEventListener('DOMContentLoaded', () => {
   if (form && submitBtn) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault(); // Mencegah reload halaman
-      
+
       // Simpan teks asli tombol
       const originalText = submitBtn.innerHTML;
-      
+
       // State loading
-      submitBtn.innerHTML = '⏳ Mengirim...';
+      submitBtn.innerHTML = 'Sending…';
       submitBtn.disabled = true;
       if (feedback) feedback.textContent = '';
-      
+
       try {
         const response = await fetch(form.action, {
           method: 'POST',
           body: new FormData(form),
           headers: { 'Accept': 'application/json' }
         });
-        
+
         if (response.ok) {
           // Sukses
-          submitBtn.innerHTML = '✓ Pesan Terkirim';
+          submitBtn.innerHTML = '✓ Sent';
           submitBtn.style.background = '#2d6a4f';
           form.reset();
           if (feedback) {
             feedback.style.color = '#2d6a4f';
-            feedback.textContent = 'Terima kasih! Saya akan segera menghubungi Anda.';
+            feedback.textContent = "Thanks! I'll get back to you soon.";
           }
+          // Kembalikan tombol; pesan sukses ikut dibersihkan
+          setTimeout(() => {
+            submitBtn.innerHTML = originalText;
+            submitBtn.style.background = '';
+            submitBtn.disabled = false;
+            if (feedback) feedback.textContent = '';
+          }, 4000);
         } else {
           // Error dari server
           const errorData = await response.json().catch(() => ({}));
-          throw new Error(errorData.errors?.[0]?.message || 'Gagal mengirim pesan');
+          throw new Error(errorData.errors?.[0]?.message || 'Message failed to send');
         }
       } catch (err) {
-        // Error jaringan / lainnya
-        submitBtn.innerHTML = '❌ Gagal';
+        // Error jaringan / lainnya; pesan dibiarkan tampil, isi form tidak dihapus
+        submitBtn.innerHTML = 'Failed to send';
         submitBtn.style.background = '#c1121f';
         if (feedback) {
           feedback.style.color = '#c1121f';
-          feedback.textContent = err.message || 'Terjadi kesalahan. Silakan coba lagi atau kirim email langsung.';
+          feedback.textContent = (err.message || 'Something went wrong.') + ' Try again, or ';
+          const mail = document.createElement('a');
+          mail.href = 'mailto:galih.priyambodho@outlook.com';
+          mail.textContent = 'email me directly';
+          mail.style.color = 'inherit';
+          feedback.appendChild(mail);
+          feedback.appendChild(document.createTextNode('.'));
         }
+        setTimeout(() => {
+          submitBtn.innerHTML = originalText;
+          submitBtn.style.background = '';
+          submitBtn.disabled = false;
+        }, 4000);
       }
-      
-      // Reset tombol setelah 3 detik
-      setTimeout(() => {
-        submitBtn.innerHTML = originalText;
-        submitBtn.style.background = '';
-        submitBtn.disabled = false;
-        if (feedback) feedback.textContent = '';
-      }, 3000);
     });
   }
 
