@@ -298,8 +298,8 @@
           <div class="hero-now-role">Software Engineer</div>
           <div class="hero-now-meta">PT Arranet Indonesia Sejahtera · Dec 2022 – present</div>
           <p class="hero-now-desc">
-            Moving legacy fintech services to Azure, building .NET Core backends for
-            transaction processing, and keeping the databases underneath them fast.
+            Keeping PayAja and BayarBayar running, and re-platforming our .NET Framework
+            services — switching core included — to .NET Core on Linux and Docker.
           </p>
         </div>
 
@@ -310,6 +310,7 @@
           <span class="stack-pill">.NET Framework</span>
           <span class="stack-pill">SQL Server</span>
           <span class="stack-pill">PostgreSQL</span>
+          <span class="stack-pill">Docker</span>
           <span class="stack-pill">REST API</span>
           <span class="stack-pill">HTML</span>
           <span class="stack-pill">JavaScript</span>
@@ -323,28 +324,34 @@
       <h2 class="reveal">A little more background</h2>
       <div class="about-text">
         <p class="reveal">
-          I started in IT operations back in 2014, went back to school for a computer science
-          degree, and have spent every year since 2018 building backend systems for Indonesian
-          fintech: <strong>bill payments, bank transfers, EDC terminals</strong>, and the automation
-          that keeps thousands of daily transaction jobs running on time. Along the way there was
-          also a year in e-commerce, which taught me that a slow product catalog annoys people
-          almost as much as a failed payment.
+          My first IT job, back in 2014, was tech support at Berca: sitting with clients, learning
+          the tools, and one long project upgrading the work PCs at a bank office — where success
+          meant staff sitting down the next morning and noticing nothing except the speed. Then a
+          computer science degree at the <strong>University of Indonesia</strong>, and in 2018 a
+          college friend pulled me into Arranet. Day one I was dropped into a live PPOB payment
+          app on ASP.NET, <strong>Bukopinet</strong>. Every new product — university tuition,
+          prepaid and postpaid telco — was mine to add, the frontend and the logic behind it.
         </p>
         <p class="reveal">
-          The work I care about sits below the UI. Designing APIs that payment partners can
-          integrate against without surprises. Keeping transaction data consistent when volume
-          spikes. Tuning <strong>SQL Server and PostgreSQL</strong> until the slow queries stop being
-          slow. Since late 2022 I've also led our migration to <strong>Azure</strong> and started
-          folding LLMs into the team's daily workflow, from technical documentation to PRD drafts,
-          because writing those by hand was nobody's favorite job.
+          Nearly everything I've built since follows one pipeline: a supplier's product (PLN,
+          telco, e-money) enters <strong>Octopus</strong>, Arranet's switching core, passes through
+          a product interface, and comes out in an app people actually pay with. I took Bukopinet
+          to mobile with Xamarin — the API and the app — plus the admin dashboard and the partner
+          management web around it. Then Arranet sent me to Bali to learn how closed-loop payment
+          apps get made, and months later that became <strong>PayAja</strong>: a Gopay-style wallet
+          for community networks, from nature schools to pesantren to cooperatives. I signed up to
+          build the API; the dashboard developer quit, so I built that too. When it needed to talk
+          to MiniATM devices, PayAja Bisnis was born, and that later grew into
+          <strong>BayarBayar</strong>. To this day, if anything breaks in either, it lands on my desk.
         </p>
         <p class="reveal">
-          What I bring to a team, beyond the stack: seven years of production incidents survived,
-          an ISO 9001:2015 habit of documenting decisions before they become mysteries, and a
-          genuine preference for boring, reliable systems over clever ones. Off the clock I obsess
-          over coffee chemistry and French-press ratios, which is the same personality trait that
-          makes me tune queries nobody has complained about yet. If that sounds like the kind of
-          engineer you need, the <a href="porto/contact.html">contact page</a> is short.
+          Right now the big work is a re-platform: taking our Windows-era .NET Framework services —
+          Octopus included — to <strong>.NET Core</strong> so they can run on Linux in Docker.
+          Honest confession: I love greenfield builds like PayAja, and I dread onboarding a supplier
+          with a huge catalog, because every product and every fee config still has to be added to
+          Octopus one by one. Off the clock it's coffee and a French press. If you need an engineer
+          who knows payments from the switching core out to the device, the
+          <a href="porto/contact.html">contact page</a> is short.
         </p>
       </div>
     </section>
