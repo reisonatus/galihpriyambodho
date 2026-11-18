@@ -4,349 +4,315 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Galih Priyambodho — Backend & Database Engineer</title>
-  <meta name="description" content="Backend & database engineer in West Java, Indonesia. Seven years of .NET, SQL Server, and PostgreSQL work in fintech: payment platforms, EDC backends, transaction systems.">
+  <meta name="description" content="Backend & database engineer in West Java, Indonesia. Payment backends on .NET, SQL Server, and PostgreSQL since 2018: PayAja, BayarBayar, Bukopinet, and the Octopus switching core.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://galihpriyambodho.pages.dev/">
   <meta property="og:title" content="Galih Priyambodho — Backend & Database Engineer">
-  <meta property="og:description" content="Seven years of .NET and SQL work in fintech: payment platforms, EDC backends, transaction systems.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23b1521f'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' fill='%23f7f5f1' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+  <meta property="og:description" content="Payment backends on .NET and SQL since 2018: PayAja, BayarBayar, Bukopinet, and the Octopus switching core.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a1814'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' fill='%23f7f5f1' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="assets/css/global.css">
   <style>
     /* ── Hero ── */
     #hero {
-      min-height: 100vh;
+      min-height: calc(100vh - 64px);
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      padding-top: 72px;
+      grid-template-columns: 1.1fr 1fr;
+      padding: 0;
     }
     .hero-left {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 80px 60px 80px 60px;
-      border-right: 1px solid var(--border);
-    }
-    .hero-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 3px;
-      color: var(--accent);
-      text-transform: uppercase;
-      margin-bottom: 28px;
-      animation: fadeUp 0.7s ease forwards;
+      padding: 80px 64px 80px var(--edge);
+      animation: rise var(--slow) var(--ease) both;
     }
     .hero-name {
       font-family: var(--font-display);
-      font-size: clamp(3rem, 5.5vw, 5rem);
-      font-weight: 500;
-      line-height: 1.05;
+      font-size: clamp(3rem, 6vw, 5.25rem);
+      font-weight: 400;
+      line-height: 1;
       letter-spacing: -0.03em;
       color: var(--ink);
-      margin-bottom: 8px;
-      animation: fadeUp 0.7s 0.1s ease forwards;
-      opacity: 0;
-    }
-    .hero-name em {
-      font-style: italic;
-      color: var(--accent);
     }
     .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(1rem, 2vw, 1.5rem);
-      font-weight: 400;
-      font-style: italic;
-      color: var(--ink-mid);
-      margin-bottom: 36px;
-      animation: fadeUp 0.7s 0.2s ease forwards;
-      opacity: 0;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-top: 20px;
     }
-    .hero-divider {
-      width: 48px; height: 1px;
-      background: var(--accent);
-      margin-bottom: 28px;
-      animation: expandW 0.8s 0.3s ease forwards;
-      transform-origin: left;
-      transform: scaleX(0);
+    .hero-loc {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--ink-faint);
+      margin-top: 4px;
     }
-    @keyframes expandW { to { transform: scaleX(1); } }
     .hero-bio {
-      font-size: 1.05rem;
-      line-height: 1.85;
+      font-size: 1.125rem;
+      line-height: 1.7;
       color: var(--ink-mid);
-      font-weight: 400;
-      max-width: 440px;
-      margin-bottom: 44px;
-      animation: fadeUp 0.7s 0.35s ease forwards;
-      opacity: 0;
+      max-width: 44ch;
+      margin-top: 32px;
     }
     .hero-cta {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      animation: fadeUp 0.7s 0.45s ease forwards;
-      opacity: 0;
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
+      margin-top: 40px;
     }
 
-    /* ── Hero Right Panel ── */
+    /* ── Hero right: struk rute transaksi (momen utama halaman) ── */
     .hero-right {
       display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      padding: 80px 60px;
+      padding: 64px var(--edge) 64px 48px;
       background: var(--bg-soft);
-      animation: fadeUp 0.8s 0.5s ease forwards;
-      opacity: 0;
+      border-left: 1px solid var(--border);
     }
-    .hero-now {
+    .receipt {
+      --hole: var(--bg-soft);
+      position: relative;
+      width: 100%;
+      max-width: 432px;
       background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 30px 28px;
-      margin-bottom: 40px;
-      box-shadow: var(--shadow-print);
-      transform: rotate(-0.4deg); /* sedikit miring, kesan kartu tertempel tangan */
+      padding: 32px 28px;
+      box-shadow: 0 1px 2px rgba(26, 24, 20, 0.06), 0 12px 32px -12px rgba(26, 24, 20, 0.18);
+      animation: rise var(--slow) 80ms var(--ease) both;
     }
-    .hero-now-label {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      letter-spacing: 2px;
-      color: var(--accent);
-      text-transform: uppercase;
-      margin-bottom: 14px;
+    /* Tepi sobekan kertas struk, atas dan bawah */
+    .receipt::before,
+    .receipt::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 8px;
+      background: radial-gradient(circle at 8px 8px, var(--hole) 5px, transparent 5.5px) 0 0 / 16px 8px repeat-x;
     }
-    .hero-now-role {
+    .receipt::before { top: -4px; transform: scaleY(-1); }
+    .receipt::after  { bottom: -4px; }
+
+    .receipt .leader + .leader { margin-top: 4px; }
+    .r-rule {
+      border: 0;
+      border-top: 1px dashed var(--border-strong);
+      margin: 24px 0;
+    }
+    .r-title {
       font-family: var(--font-display);
-      font-size: 1.45rem;
-      color: var(--ink);
-      line-height: 1.3;
-    }
-    .hero-now-meta {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.5px;
-      color: var(--ink-faint);
-      margin: 6px 0 16px;
-    }
-    .hero-now-desc {
-      font-size: 0.9rem;
-      line-height: 1.75;
-      color: var(--ink-mid);
+      font-size: 1.125rem;
       font-weight: 400;
+      color: var(--ink);
+      line-height: 1.35;
+      margin-bottom: 20px;
     }
 
-    .hero-stack-title {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      letter-spacing: 2px;
-      color: var(--ink-faint);
-      text-transform: uppercase;
-      margin-bottom: 14px;
+    .route { list-style: none; position: relative; }
+    .route::before {
+      content: '';
+      position: absolute;
+      left: 4px; top: 8px; bottom: 8px;
+      border-left: 1px solid var(--border-strong);
     }
-    .hero-stack {
+    .route li {
+      position: relative;
+      padding-left: 24px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+      flex-direction: column;
     }
-    .stack-pill {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.5px;
-      padding: 6px 14px;
+    .route li + li { margin-top: 16px; }
+    .route li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 6px;
+      width: 9px; height: 9px;
       background: var(--bg-card);
-      border: 1px solid var(--border);
-      color: var(--ink-mid);
-      border-radius: 20px;
-      transition: all 0.2s;
+      border: 1px solid var(--ink-mid);
     }
-    .stack-pill:hover {
-      border-color: var(--accent);
-      color: var(--accent);
+    .route .r-step {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+    .route .r-what {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--ink-mid);
+      line-height: 1.5;
+    }
+    .route li.is-now::before { background: var(--accent); border-color: var(--accent); }
+    .route li.is-now .r-what { color: var(--accent); }
+
+    .r-foot {
+      margin-top: 24px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--ink-faint);
+      text-align: center;
     }
 
-    /* ── About / Summary ── */
+    /* ── About ── */
     #about {
-      padding: 0 60px 96px;
-      max-width: 1020px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+      padding-top: 120px;
+      max-width: 1120px;
     }
     #about h2 {
       font-family: var(--font-display);
-      font-size: clamp(1.6rem, 2.6vw, 2.2rem);
-      font-weight: 500;
+      font-size: 1.75rem;
+      font-weight: 400;
+      line-height: 1.25;
       color: var(--ink);
-      letter-spacing: -0.5px;
-      margin-bottom: 24px;
     }
     .about-text p {
-      font-size: 1.05rem;
-      line-height: 1.85;
+      font-size: 1.0625rem;
+      line-height: 1.8;
       color: var(--ink-mid);
-      font-weight: 400;
-      max-width: 68ch;
-      margin-bottom: 18px;
+      max-width: 66ch;
     }
-    .about-text p:last-child { margin-bottom: 0; }
-    /* Highlight ala stabilo tipis di kata kunci — terasa ditandai manusia */
-    .about-text strong {
-      color: var(--ink);
-      font-weight: 500;
-      background: linear-gradient(transparent 62%, var(--accent-soft) 62%);
-      padding: 0 2px;
-    }
-    .about-text a { color: var(--accent); text-underline-offset: 3px; }
+    .about-text p + p { margin-top: 20px; }
+    .about-text strong { color: var(--ink); font-weight: 500; }
+    .about-text a { color: var(--accent); text-underline-offset: 4px; }
 
-    /* ── Quick Nav Cards ── */
-    #quick-nav {
-      padding: 0 60px 80px;
+    /* ── Further reading: daftar tautan, bukan kartu ── */
+    #more { padding-top: 0; max-width: 1120px; }
+    .more-list { list-style: none; border-top: 1px solid var(--border-strong); }
+    .more-list a {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    .qnav-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
+      grid-template-columns: 280px 1fr auto;
+      gap: 40px;
+      align-items: baseline;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
       text-decoration: none;
       color: inherit;
-      transition: all 0.25s;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
     }
-    .qnav-card:hover {
-      border-color: var(--accent);
-      box-shadow: var(--shadow-print);
-    }
-    .qnav-title {
+    .more-name {
       font-family: var(--font-display);
-      font-size: 1.3rem;
+      font-size: 1.375rem;
       color: var(--ink);
+      transition: color var(--fast) var(--ease);
     }
-    .qnav-desc {
-      font-size: 0.82rem;
-      color: var(--ink-mid);
-      font-weight: 400;
-      line-height: 1.6;
-    }
-    .qnav-arrow {
-      margin-top: auto;
-      padding-top: 16px;
-      font-size: 1rem;
-      color: var(--accent);
-      transition: transform 0.2s;
-    }
-    .qnav-card:hover .qnav-arrow { transform: translate(4px, -4px); }
+    .more-desc { font-size: 1rem; color: var(--ink-mid); }
+    .more-go { font-family: var(--font-mono); font-size: 0.875rem; color: var(--ink-faint); }
+    .more-list a:hover .more-name,
+    .more-list a:hover .more-go { color: var(--accent); }
 
     @media (max-width: 900px) {
-      #hero { grid-template-columns: 1fr; }
-      .hero-left { padding: 80px 24px 48px; border-right: none; border-bottom: 1px solid var(--border); }
-      .hero-right { padding: 48px 24px; }
-      #about { padding: 0 24px 72px; }
-      #quick-nav { padding: 0 24px 60px; grid-template-columns: 1fr; }
+      #hero { grid-template-columns: 1fr; min-height: 0; }
+      .hero-left { padding: 64px var(--edge) 56px; }
+      .hero-right { padding: 48px var(--edge) 56px; border-left: 0; border-top: 1px solid var(--border); }
+      .receipt { padding: 28px 20px; }
+      #about { grid-template-columns: 1fr; gap: 20px; padding-top: 72px; }
+      .more-list a { grid-template-columns: 1fr auto; gap: 4px 16px; }
+      .more-desc { grid-column: 1; grid-row: 2; }
+      .more-go { grid-row: 1 / span 2; align-self: center; }
     }
   </style>
 </head>
 <body>
 
   <a href="#main" class="skip-link">Skip to content</a>
-  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
   <nav>
-    <a href="index.html" class="nav-logo">Galih <span>Priyambodho</span></a>
+    <a href="index.html" class="nav-logo">Galih Priyambodho</a>
     <div class="nav-links">
       <a href="porto/skills.html">Skills</a>
       <a href="porto/projects.html">Projects</a>
       <a href="porto/experience.html">Experience</a>
       <a href="porto/contact.html">Contact</a>
     </div>
-    <div class="nav-badge">
-      <div class="badge-dot"></div>
-      Available
-    </div>
+    <a href="docs/CV_Galih_Priyambodho.pdf" class="nav-cv" download>CV · PDF</a>
   </nav>
 
   <main id="main">
     <section id="hero">
 
-      <!-- Left -->
       <div class="hero-left">
-        <div class="hero-eyebrow">Cikarang, West Java · Indonesia</div>
-        <h1 class="hero-name">Galih<br><em>Priyambodho</em></h1>
-        <p class="hero-title">Backend & Database Engineer</p>
-        <div class="hero-divider"></div>
+        <h1 class="hero-name">Galih Priyambodho</h1>
+        <p class="hero-title">Backend &amp; Database Engineer</p>
+        <p class="hero-loc">Cikarang, West Java, Indonesia</p>
         <p class="hero-bio">
           I build the parts of fintech nobody sees: payment APIs, transaction engines,
           and the databases underneath them. Seven years in, most of my day is still
           C#, .NET, and convincing SQL Server or PostgreSQL to go faster.
         </p>
         <div class="hero-cta">
-          <a href="porto/experience.html" class="btn btn-primary">View Experience →</a>
-          <a href="porto/contact.html" class="btn btn-outline">Get in Touch</a>
-          <a href="docs/CV_Galih_Priyambodho.pdf" class="btn btn-outline" download>Download CV ↓</a>
+          <a href="porto/experience.html" class="btn btn-primary">See my experience</a>
+          <a href="porto/contact.html" class="btn btn-outline">Get in touch</a>
         </div>
       </div>
 
-      <!-- Right -->
       <div class="hero-right">
-        <div class="hero-now">
-          <div class="hero-now-label">Currently</div>
-          <div class="hero-now-role">Software Engineer</div>
-          <div class="hero-now-meta">PT Arranet Indonesia Sejahtera · Dec 2022 – present</div>
-          <p class="hero-now-desc">
-            Keeping PayAja and BayarBayar running, and re-platforming our .NET Framework
-            services — switching core included — to .NET Core on Linux and Docker.
-          </p>
-        </div>
+        <figure class="receipt" aria-label="Current role and the payment route I work on">
+          <div class="leader"><span>Role</span><span class="dots"></span><span>Software Engineer</span></div>
+          <div class="leader"><span>At</span><span class="dots"></span><span>PT Arranet Indonesia Sejahtera</span></div>
+          <div class="leader"><span>Since</span><span class="dots"></span><span>Dec 2022</span></div>
 
-        <div class="hero-stack-title">Tech Stack</div>
-        <div class="hero-stack">
-          <span class="stack-pill">C#</span>
-          <span class="stack-pill">.NET Core</span>
-          <span class="stack-pill">.NET Framework</span>
-          <span class="stack-pill">SQL Server</span>
-          <span class="stack-pill">PostgreSQL</span>
-          <span class="stack-pill">Docker</span>
-          <span class="stack-pill">REST API</span>
-          <span class="stack-pill">HTML</span>
-          <span class="stack-pill">JavaScript</span>
-        </div>
+          <hr class="r-rule">
+
+          <p class="r-title">Where a payment goes, and the parts I work on</p>
+          <ol class="route">
+            <li>
+              <span class="r-step">Supplier</span>
+              <span class="r-what">PLN, telco, e-money</span>
+            </li>
+            <li class="is-now">
+              <span class="r-step">Octopus, Arranet’s switching core</span>
+              <span class="r-what">Moving to .NET Core on Linux and Docker</span>
+            </li>
+            <li>
+              <span class="r-step">Product interface</span>
+              <span class="r-what">One per supplier</span>
+            </li>
+            <li>
+              <span class="r-step">The app people pay with</span>
+              <span class="r-what">PayAja, BayarBayar, Bukopinet</span>
+            </li>
+          </ol>
+
+          <hr class="r-rule">
+
+          <div class="leader"><span>Code</span><span class="dots"></span><span>C#, .NET Core, .NET Framework</span></div>
+          <div class="leader"><span>Data</span><span class="dots"></span><span>SQL Server, PostgreSQL</span></div>
+          <div class="leader"><span>Runs on</span><span class="dots"></span><span>Docker, REST APIs</span></div>
+          <div class="leader"><span>Front</span><span class="dots"></span><span>HTML, JavaScript</span></div>
+
+          <p class="r-foot">In fintech since Oct 2018</p>
+        </figure>
       </div>
 
     </section>
 
-    <!-- About / Summary -->
     <section id="about">
       <h2 class="reveal">A little more background</h2>
       <div class="about-text">
         <p class="reveal">
           My first IT job, back in 2014, was tech support at Berca: sitting with clients, learning
-          the tools, and one long project upgrading the work PCs at a bank office — where success
+          the tools, and one long project upgrading the work PCs at a bank office. Success there
           meant staff sitting down the next morning and noticing nothing except the speed. Then a
           computer science degree at the <strong>University of Indonesia</strong>, and in 2018 a
           college friend pulled me into Arranet. Day one I was dropped into a live PPOB payment
-          app on ASP.NET, <strong>Bukopinet</strong>. Every new product — university tuition,
-          prepaid and postpaid telco — was mine to add, the frontend and the logic behind it.
+          app on ASP.NET, <strong>Bukopinet</strong>. Every new product (university tuition,
+          prepaid and postpaid telco) was mine to add, the frontend and the logic behind it.
         </p>
         <p class="reveal">
           Nearly everything I've built since follows one pipeline: a supplier's product (PLN,
           telco, e-money) enters <strong>Octopus</strong>, Arranet's switching core, passes through
           a product interface, and comes out in an app people actually pay with. I took Bukopinet
-          to mobile with Xamarin — the API and the app — plus the admin dashboard and the partner
+          to mobile with Xamarin, the API and the app, plus the admin dashboard and the partner
           management web around it. Then Arranet sent me to Bali to learn how closed-loop payment
           apps get made, and months later that became <strong>PayAja</strong>: a Gopay-style wallet
           for community networks, from nature schools to pesantren to cooperatives. I signed up to
-          build the API; the dashboard developer quit, so I built that too. When it needed to talk
+          build the API. The dashboard developer quit, so I built that too. When it needed to talk
           to MiniATM devices, PayAja Bisnis was born, and that later grew into
-          <strong>BayarBayar</strong>. To this day, if anything breaks in either, it lands on my desk.
+          <strong>BayarBayar</strong>. If anything breaks in either one today, it lands on my desk.
         </p>
         <p class="reveal">
-          Right now the big work is a re-platform: taking our Windows-era .NET Framework services —
-          Octopus included — to <strong>.NET Core</strong> so they can run on Linux in Docker.
+          Right now the big work is a re-platform: taking our Windows-era .NET Framework services,
+          Octopus included, to <strong>.NET Core</strong> so they can run on Linux in Docker.
           Honest confession: I love greenfield builds like PayAja, and I dread onboarding a supplier
           with a huge catalog, because every product and every fee config still has to be added to
           Octopus one by one. Off the clock it's coffee and a French press. If you need an engineer
@@ -356,30 +322,37 @@
       </div>
     </section>
 
-    <!-- Quick Nav -->
-    <div id="quick-nav">
-      <a href="porto/skills.html" class="qnav-card reveal">
-        <div class="qnav-title">Skills</div>
-        <div class="qnav-desc">The stack I work with every day, and how long each tool has been in rotation.</div>
-        <div class="qnav-arrow">↗</div>
-      </a>
-      <a href="porto/projects.html" class="qnav-card reveal">
-        <div class="qnav-title">Projects</div>
-        <div class="qnav-desc">Payment platforms, EDC backends, and the other systems I've shipped at work.</div>
-        <div class="qnav-arrow">↗</div>
-      </a>
-      <a href="porto/experience.html" class="qnav-card reveal">
-        <div class="qnav-title">Experience</div>
-        <div class="qnav-desc">Where I've worked since 2014, from IT trainee to fintech backend engineer.</div>
-        <div class="qnav-arrow">↗</div>
-      </a>
-    </div>
+    <section id="more" aria-label="More pages">
+      <ul class="more-list">
+        <li class="reveal">
+          <a href="porto/skills.html">
+            <span class="more-name">Skills</span>
+            <span class="more-desc">The tools I use, since when, and what for</span>
+            <span class="more-go" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li class="reveal">
+          <a href="porto/projects.html">
+            <span class="more-name">Projects</span>
+            <span class="more-desc">PayAja, BayarBayar, Bukopinet, and the Octopus re-platform</span>
+            <span class="more-go" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li class="reveal">
+          <a href="porto/experience.html">
+            <span class="more-name">Experience</span>
+            <span class="more-desc">Where I've worked since 2014, from IT trainee to fintech backend</span>
+            <span class="more-go" aria-hidden="true">→</span>
+          </a>
+        </li>
+      </ul>
+    </section>
   </main>
 
   <footer>
-    <div class="footer-copy">© 2026 <span>Galih Priyambodho</span></div>
+    <span>© 2026 Galih Priyambodho</span>
     <a href="docs/CV_Galih_Priyambodho.pdf" class="footer-cv" download>Download CV (PDF)</a>
-    <div class="footer-loc">Cikarang, West Java, Indonesia</div>
+    <span>Cikarang, West Java, Indonesia</span>
   </footer>
 
   <script src="assets/js/main.js"></script>

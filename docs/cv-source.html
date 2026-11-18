@@ -68,9 +68,9 @@
   <p>
     Backend and database engineer with 7+ years of software engineering experience (since 2018), most of it
     building transaction systems for Indonesian financial technology, plus a year in e-commerce. Specialised in
-    C# / .NET Core services, SQL Server and PostgreSQL performance tuning, and high-volume payment processing
-    (PPOB bill payments, closed-loop wallets, EDC/MiniATM terminal backends). Currently re-platforming legacy
-    .NET Framework services — including a transaction switching core — to .NET Core on Linux and Docker.
+    C# / .NET Core services, SQL Server and PostgreSQL query tuning, and payment systems (PPOB bill payments,
+    closed-loop wallets, EDC/MiniATM terminal backends). Currently re-platforming legacy .NET Framework services,
+    including the company's transaction switching core, to .NET Core on Linux and Docker.
   </p>
 
   <h2>Work Experience</h2>
@@ -82,13 +82,11 @@
     </div>
     <div class="job-org">PT Arranet Indonesia Sejahtera — Jakarta, Indonesia</div>
     <ul>
-      <li>Re-platform legacy .NET Framework services — including the company's transaction switching core — to .NET Core on Linux and Docker, with staged cutovers and rollback paths for systems that cannot afford downtime.</li>
-      <li>Own the PayAja and BayarBayar payment platforms end to end: transaction APIs, web dashboards, and every escalation that comes through customer service.</li>
-      <li>Build and maintain .NET Core backend services processing high-volume financial transactions: PPOB bill payments, bank transfers, and wallet-to-wallet transfers.</li>
-      <li>Reduce query latency on PostgreSQL and SQL Server through indexing strategy, table partitioning, and execution-plan tuning for high-volume financial data.</li>
-      <li>Built an automated transaction engine that schedules and runs thousands of daily transaction jobs across a network of payment devices.</li>
-      <li>Modernised the backend for EDC/MiniATM payment terminals, improving server-side processing speed and transaction security.</li>
-      <li>Apply AI-assisted development (Claude Code) in the daily workflow, from implementation to technical documentation.</li>
+      <li>Re-platforming the product interfaces and Octopus, the company's transaction switching core, from Windows and .NET Framework to .NET Core on Linux and Docker.</li>
+      <li>Maintain the PayAja and BayarBayar payment platforms: transaction APIs, web dashboards, and the issues customer service escalates.</li>
+      <li>Onboard new suppliers (PLN, telco, e-money) into Octopus, configuring their products and fees.</li>
+      <li>Tune SQL Server and PostgreSQL queries through indexing and execution-plan analysis.</li>
+      <li>Use AI-assisted development (Claude Code) in daily work, from implementation to technical documentation.</li>
     </ul>
   </div>
 
@@ -100,8 +98,8 @@
     <div class="job-org">Qodyra Technologies — Remote</div>
     <ul>
       <li>Built an e-commerce platform for UMKM sellers (apparel, footwear, and more) using Laravel and MongoDB, integrated with the Xendit payment gateway.</li>
-      <li>Optimised query performance and indexing for large-scale product catalogs across PostgreSQL and MongoDB.</li>
-      <li>Resolved data-flow bottlenecks between SQL and NoSQL stores, keeping catalog data consistent and reads fast under load.</li>
+      <li>Learned Laravel and MongoDB on the job, starting from zero.</li>
+      <li>Worked on query performance, indexing, and data consistency for large product catalogs across SQL and NoSQL stores.</li>
     </ul>
   </div>
 
@@ -112,9 +110,9 @@
     </div>
     <div class="job-org">PT Arranet Indonesia Sejahtera — Jakarta, Indonesia</div>
     <ul>
-      <li>Developed new payment products end to end on Bukopinet, a live PPOB application on ASP.NET Framework: university tuition, telco prepaid/postpaid, and e-money products, from frontend to backend logic.</li>
+      <li>Developed new payment products end to end on Bukopinet, a live PPOB application on ASP.NET Framework: university tuition and telco prepaid/postpaid, from frontend to backend logic.</li>
       <li>Built Bukopinet Mobile with Xamarin, including its REST API, the admin dashboard, and the partner (CA/branch) management web application.</li>
-      <li>Built PayAja, a closed-loop wallet used by community networks (schools, pesantren, cooperatives): the transaction API and later the web dashboard; its MiniATM-connected variant became BayarBayar.</li>
+      <li>Built PayAja, a closed-loop wallet used by community networks (nature schools, pesantren, cooperatives), developed after a study trip to Bali: the transaction API and later the web dashboard. Its MiniATM-connected variant, PayAja Bisnis, became BayarBayar.</li>
       <li>Implemented API security with JWT and OAuth2 for bank and payment partner integrations, documented with Swagger/OpenAPI.</li>
       <li>Worked within an ISO 9001:2015 quality management process where every change is documented.</li>
     </ul>
@@ -127,16 +125,16 @@
     </div>
     <div class="job-org">Berca Hardayaperkasa — Jakarta, Indonesia</div>
     <ul>
-      <li>Supported senior engineers in IT operations and troubleshooting, resolving 10+ technical tickets daily.</li>
-      <li>Helped maintain 99% uptime for internal infrastructure and streamlined daily reporting, reducing manual documentation time by about 20%.</li>
+      <li>Technical support and client visits, supporting senior engineers in IT operations and troubleshooting.</li>
+      <li>Took part in a long PC upgrade project for a bank office, completed without disrupting staff work.</li>
     </ul>
   </div>
 
   <h2>Key Projects</h2>
-  <div class="proj"><strong>PayAja Digital Transaction Platform</strong> <span class="muted">(2020–2024, live)</span> — closed-loop wallet for community networks (schools, pesantren, cooperatives): PPOB bill payments, bank transfers, and wallet-to-wallet transfers through one integrated service. Built the transaction API and the web dashboard. .NET Core, PostgreSQL.</div>
-  <div class="proj"><strong>Bayar-Bayar EDC Backend</strong> <span class="muted">(2024, active)</span> — modernisation of the backend behind EDC/MiniATM payment terminals: faster server-side processing, tighter transaction security. .NET Core.</div>
-  <div class="proj"><strong>Automated Transaction Engine</strong> <span class="muted">(2025, active)</span> — internal engine scheduling and running thousands of transaction jobs a day across a payment device network. .NET Core, C#, SQL Server.</div>
-  <div class="proj"><strong>National Utility Payment Link</strong> <span class="muted">(2022–2023, live)</span> — maintained the integration handling national electricity payments with a focus on reliability and uptime. .NET Framework.</div>
+  <div class="proj"><strong>PayAja</strong> <span class="muted">(2020–2024, live)</span>: closed-loop wallet for community networks (nature schools, pesantren, cooperatives). Built the transaction API, then the web dashboard. .NET Core, PostgreSQL.</div>
+  <div class="proj"><strong>BayarBayar</strong> <span class="muted">(2024, active)</span>: grew out of PayAja Bisnis, which connected the wallet to EDC/MiniATM devices. Still maintained by me. .NET Core.</div>
+  <div class="proj"><strong>Octopus re-platform</strong> <span class="muted">(2022–present)</span>: moving the transaction switching core and its product interfaces from .NET Framework on Windows to .NET Core on Linux and Docker.</div>
+  <div class="proj"><strong>Bukopinet and Bukopinet Mobile</strong> <span class="muted">(2018–2021)</span>: live PPOB application on ASP.NET; added products end to end, then built the Xamarin app, its API, the admin dashboard, and the partner management web. ASP.NET, Xamarin.</div>
 
   <h2>Education</h2>
   <div class="job">
@@ -157,15 +155,15 @@
   <h2>Technical Skills</h2>
   <div class="skill-line"><strong>Backend:</strong> C#, .NET Core, ASP.NET Core, .NET Framework, Web API, Entity Framework Core, LINQ, MVC, WCF, Xamarin, REST API design, background jobs and scheduling</div>
   <div class="skill-line"><strong>Databases:</strong> SQL Server, T-SQL, stored procedures, indexing, query optimization, execution plans, PostgreSQL, PL/pgSQL, partitioning, MongoDB, SQL/NoSQL data consistency</div>
-  <div class="skill-line"><strong>Payments domain:</strong> payment gateway integration (banks, aggregators, Xendit), PPOB billing systems, closed-loop wallets, EDC/MiniATM terminal backends, reconciliation and data integrity, high-volume transaction processing</div>
-  <div class="skill-line"><strong>Tooling and process:</strong> Docker, Linux, legacy re-platforming, AI-assisted development (Claude Code), Swagger/OpenAPI, Git, Azure DevOps, Trello, ISO 9001:2015 workflow, technical documentation and PRDs</div>
+  <div class="skill-line"><strong>Payments domain:</strong> payment gateway integration (banks, aggregators, Xendit), PPOB billing systems, closed-loop wallets, EDC/MiniATM terminal backends, reconciliation and data integrity, switching core supplier onboarding</div>
+  <div class="skill-line"><strong>Tooling and process:</strong> Docker, Linux, legacy re-platforming, AI-assisted development (Claude Code), Swagger/OpenAPI, Git, Azure DevOps, Trello, Visual Studio, VS Code, ISO 9001:2015 workflow, technical documentation and PRDs</div>
   <div class="skill-line"><strong>Web:</strong> HTML, CSS, JavaScript (ES6+), Bootstrap, Laravel/PHP</div>
 
   <h2>Languages</h2>
   <div class="skill-line">Indonesian (native) &nbsp;|&nbsp; English (professional working proficiency)</div>
 
   <h2>Additional Information</h2>
-  <div class="skill-line">Mentoring junior developers; re-platforming legacy systems to containerized environments. Outside work: coffee chemistry and precision brewing (French press).</div>
+  <div class="skill-line">Outside work: coffee, brewed with a French press.</div>
 
 </body>
 </html>

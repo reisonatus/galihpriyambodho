@@ -4,210 +4,194 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Galih Priyambodho — Skills</title>
-  <meta name="description" content="The full toolbox behind seven years of fintech backend work: C#, .NET, SQL Server, PostgreSQL, Docker, payments domain knowledge, and the supporting cast.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23b1521f'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' fill='%23f7f5f1' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="The tools behind seven years of fintech backend work: C#, .NET, SQL Server, PostgreSQL, Docker, payments domain knowledge, and what supports them.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a1814'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' fill='%23f7f5f1' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="../assets/css/global.css">
   <link rel="stylesheet" href="../assets/css/pages.css">
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
-  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <nav>
-    <a href="../index.html" class="nav-logo">Galih <span>Priyambodho</span></a>
+    <a href="../index.html" class="nav-logo">Galih Priyambodho</a>
     <div class="nav-links">
-      <a href="skills.html" class="active" aria-current="page">Skills</a>
+      <a href="skills.html" aria-current="page">Skills</a>
       <a href="projects.html">Projects</a>
       <a href="experience.html">Experience</a>
       <a href="contact.html">Contact</a>
     </div>
-    <div class="nav-badge"><div class="badge-dot"></div>Available</div>
+    <a href="../docs/CV_Galih_Priyambodho.pdf" class="nav-cv" download>CV · PDF</a>
   </nav>
 
   <main id="main">
-    <div class="page-banner">
-      <h1 class="page-banner-title">What I <em>Work With</em></h1>
-      <p class="page-banner-sub">No percentage bars here. The full toolbox: what I use, since when, and what for.</p>
-    </div>
+    <header class="page-banner">
+      <h1 class="page-banner-title">Skills</h1>
+      <p class="page-banner-sub">What I use, since when, and what for.</p>
+    </header>
 
     <section>
       <div class="skills-wrap">
 
-        <!-- Backend -->
         <div class="reveal">
-          <h2 class="skill-group-title">Backend Engineering <span>Primary</span></h2>
+          <h2 class="skill-group-title">Backend</h2>
           <div class="skills-list">
             <div class="skill-row">
               <div class="skill-name">C# / .NET Core</div>
-              <div class="skill-note">Since 2018, when a college friend dropped me into a live PPOB codebase on day one. Payment APIs, background workers, transaction flows.</div>
-              <div class="skill-row-tags">
-                <span class="tag">ASP.NET Core</span><span class="tag">Web API</span><span class="tag">LINQ</span><span class="tag">EF Core</span>
-              </div>
+              <div class="skill-note">Since 2018, starting on a live PPOB codebase on day one. Payment APIs and transaction flows.</div>
+              <div class="tags"><span class="tag">ASP.NET Core</span><span class="tag">Web API</span><span class="tag">LINQ</span><span class="tag">EF Core</span></div>
             </div>
             <div class="skill-row">
               <div class="skill-name">.NET Framework</div>
-              <div class="skill-note">The legacy half of the job: Bukopinet and the Octopus switching core still run on it. Getting them off is my current project.</div>
-              <div class="skill-row-tags">
-                <span class="tag">MVC</span><span class="tag">WCF</span><span class="tag">WinForms</span>
-              </div>
+              <div class="skill-note">Bukopinet and the Octopus switching core run on it. Moving them off it is my current project.</div>
+              <div class="tags"><span class="tag">MVC</span><span class="tag">WCF</span><span class="tag">WinForms</span></div>
             </div>
             <div class="skill-row">
               <div class="skill-name">ASP.NET Core Web API</div>
-              <div class="skill-note">REST endpoints built for payment partners who read the docs closely and retry aggressively. PayAja's API talks straight to the mobile app.</div>
+              <div class="skill-note">The API behind PayAja, which the mobile app talks to directly.</div>
             </div>
             <div class="skill-row">
               <div class="skill-name">Entity Framework Core &amp; LINQ</div>
-              <div class="skill-note">ORM where it helps, raw SQL where it doesn't. Knowing when to switch is the actual skill.</div>
+              <div class="skill-note">ORM where it fits, raw SQL where it doesn't.</div>
             </div>
             <div class="skill-row">
               <div class="skill-name">API Security</div>
-              <div class="skill-note">JWT and OAuth2 flows, hardened over years of fintech integrations and partner audits.</div>
-              <div class="skill-row-tags">
-                <span class="tag">JWT</span><span class="tag">OAuth2</span>
-              </div>
+              <div class="skill-note">JWT and OAuth2 for app and partner integrations.</div>
+              <div class="tags"><span class="tag">JWT</span><span class="tag">OAuth2</span></div>
             </div>
             <div class="skill-row">
               <div class="skill-name">Transaction Systems</div>
-              <div class="skill-note">High-volume payment processing where a lost record is not an option: idempotency, reconciliation, audit trails.</div>
+              <div class="skill-note">Payment flows where every record has to be accounted for: idempotency, reconciliation, audit trails.</div>
             </div>
             <div class="skill-row">
               <div class="skill-name">Background Jobs &amp; Automation</div>
-              <div class="skill-note">Schedulers that run thousands of transaction jobs a day so the operations team doesn't have to.</div>
+              <div class="skill-note">Scheduled jobs that process transactions so nobody has to run them by hand.</div>
             </div>
           </div>
         </div>
 
-        <!-- Database -->
         <div class="reveal">
-          <h2 class="skill-group-title">Database Engineering <span>Core</span></h2>
+          <h2 class="skill-group-title">Databases</h2>
           <div class="skills-list">
             <div class="skill-row">
               <div class="skill-name">SQL Server</div>
-              <div class="skill-note">My first and longest database, since 2018. The one whose query plans misbehave at 2 a.m.</div>
-              <div class="skill-row-tags">
-                <span class="tag">T-SQL</span><span class="tag">Indexing</span><span class="tag">Query Tuning</span>
-              </div>
+              <div class="skill-note">My first and longest-running database, since 2018.</div>
+              <div class="tags"><span class="tag">T-SQL</span><span class="tag">Indexing</span><span class="tag">Query tuning</span></div>
             </div>
             <div class="skill-row">
               <div class="skill-name">T-SQL &amp; Stored Procedures</div>
-              <div class="skill-note">Business logic that lives close to the data, versioned and reviewed like any other code.</div>
+              <div class="skill-note">Business logic that sits next to the data, reviewed like any other code.</div>
             </div>
             <div class="skill-row">
               <div class="skill-name">Query Optimization</div>
-              <div class="skill-note">The part of the job I enjoy most: reading execution plans and shaving milliseconds off queries that run a million times a day.</div>
-              <div class="skill-row-tags">
-                <span class="tag">Execution Plans</span><span class="tag">Caching</span>
-              </div>
+              <div class="skill-note">Reading execution plans and fixing slow queries. The part of the job I enjoy most.</div>
+              <div class="tags"><span class="tag">Execution plans</span><span class="tag">Caching</span></div>
             </div>
             <div class="skill-row">
               <div class="skill-name">PostgreSQL</div>
-              <div class="skill-note">The newer half of my database work, since 2021, on e-commerce catalogs and then high-volume financial data.</div>
-              <div class="skill-row-tags">
-                <span class="tag">EXPLAIN ANALYZE</span>
-              </div>
+              <div class="skill-note">Since 2021, first for e-commerce catalogs, then for payment data.</div>
+              <div class="tags"><span class="tag">EXPLAIN ANALYZE</span></div>
             </div>
             <div class="skill-row">
               <div class="skill-name">PL/pgSQL &amp; Partitioning</div>
-              <div class="skill-note">Keeping big transaction tables queryable by splitting them before they become a problem.</div>
+              <div class="skill-note">Splitting large transaction tables so they stay quick to query.</div>
             </div>
             <div class="skill-row">
               <div class="skill-name">MongoDB</div>
-              <div class="skill-note">The Qodyra year: UMKM product catalogs — clothes, shoes, everything — modeled as documents because they refuse to fit in rows.</div>
+              <div class="skill-note">The Qodyra year: product catalogs for UMKM sellers (clothes, shoes, everything) stored as documents, because they don't fit neatly in rows.</div>
             </div>
             <div class="skill-row">
               <div class="skill-name">SQL / NoSQL Data Consistency</div>
-              <div class="skill-note">Keeping data honest when it lives in two different kinds of stores at once.</div>
+              <div class="skill-note">Keeping data in step when it lives in both kinds of store.</div>
             </div>
           </div>
         </div>
 
-        <!-- Payments domain -->
         <div class="reveal">
-          <h2 class="skill-group-title">Payments Domain <span>Fintech</span></h2>
+          <h2 class="skill-group-title">Payments</h2>
           <div class="skills-list">
             <div class="skill-row">
               <div class="skill-name">Payment Gateway Integration</div>
-              <div class="skill-note">Wiring apps to banks, aggregators, and Xendit — and handling every weird thing they send back.</div>
+              <div class="skill-note">Connecting apps to banks, aggregators, and Xendit, and handling whatever they send back.</div>
             </div>
             <div class="skill-row">
               <div class="skill-name">PPOB Billing Systems</div>
-              <div class="skill-note">Bill payments at national scale: electricity, telco, university tuition. My least favorite part is still real — new supplier, huge catalog, every product and fee added to the switching core one by one.</div>
+              <div class="skill-note">Electricity, telco, university tuition. The part I like least: a new supplier with a huge catalog, where every product and fee goes into the switching core one by one.</div>
             </div>
             <div class="skill-row">
               <div class="skill-name">EDC Terminal Backends</div>
-              <div class="skill-note">The server side of MiniATM devices — the connection that turned PayAja Bisnis into BayarBayar. Fast responses, tight security, no second chances.</div>
+              <div class="skill-note">The server side of MiniATM devices, the connection that turned PayAja Bisnis into BayarBayar.</div>
             </div>
             <div class="skill-row">
               <div class="skill-name">Reconciliation &amp; Data Integrity</div>
-              <div class="skill-note">Making sure every rupiah that enters the system can be accounted for on the way out.</div>
+              <div class="skill-note">Checking that every rupiah that comes in can be traced on the way out.</div>
             </div>
           </div>
         </div>
 
-        <!-- Cloud & tooling -->
         <div class="reveal">
-          <h2 class="skill-group-title">Tooling &amp; Process <span>Daily</span></h2>
+          <h2 class="skill-group-title">Tooling and process</h2>
           <div class="skills-list">
             <div class="skill-row">
               <div class="skill-name">Docker &amp; Linux</div>
-              <div class="skill-note">The destination of our current re-platform: .NET Framework services rebuilt on .NET Core so they can leave Windows and run in containers.</div>
+              <div class="skill-note">Where the current re-platform is headed: .NET Framework services rebuilt on .NET Core to run in containers on Linux.</div>
             </div>
             <div class="skill-row">
               <div class="skill-name">Legacy Migration</div>
-              <div class="skill-note">Moving systems that can't afford downtime: staged cutovers, rollback plans, nervous stakeholders.</div>
+              <div class="skill-note">Moving systems that can't go down, with staged cutovers and a rollback plan.</div>
             </div>
             <div class="skill-row">
               <div class="skill-name">AI-Assisted Development</div>
-              <div class="skill-note">Full convert to Claude Code. It does a lot of the typing now; I do the judging.</div>
+              <div class="skill-note">I use Claude Code every day. It does a lot of the typing, and I review what it writes.</div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-name">Visual Studio &amp; VS Code</div>
+              <div class="skill-note">Visual Studio Community since 2018, VS Code since around 2020.</div>
             </div>
             <div class="skill-row">
               <div class="skill-name">Swagger / OpenAPI</div>
-              <div class="skill-note">API documentation partners can actually integrate from, kept in sync with the code.</div>
+              <div class="skill-note">API docs kept in sync with the code, so partners can integrate from them.</div>
             </div>
             <div class="skill-row">
               <div class="skill-name">Git, Azure DevOps &amp; Trello</div>
-              <div class="skill-note">Azure DevOps from day one at Arranet, repos and boards both — with a Trello era when the license got too expensive. Same discipline, free tier.</div>
+              <div class="skill-note">Azure DevOps for repos and boards since day one at Arranet, and Trello for a while when the license got too expensive.</div>
             </div>
             <div class="skill-row">
               <div class="skill-name">ISO 9001:2015 Workflow</div>
-              <div class="skill-note">Years of working inside a certified quality process: decisions documented before they become mysteries.</div>
+              <div class="skill-note">Years inside a certified quality process, where every change gets documented.</div>
             </div>
             <div class="skill-row">
               <div class="skill-name">Technical Documentation &amp; PRDs</div>
-              <div class="skill-note">Writing specs other engineers can build from without a meeting to decode them.</div>
+              <div class="skill-note">Specs written before a feature gets built.</div>
             </div>
             <div class="skill-row">
               <div class="skill-name">IT Operations &amp; Troubleshooting</div>
-              <div class="skill-note">Where I started in 2014, upgrading bank office PCs. Old habit that still pays off every time production hiccups.</div>
+              <div class="skill-note">Where I started in 2014: supporting clients and upgrading bank office PCs.</div>
             </div>
           </div>
         </div>
 
-        <!-- Web -->
         <div class="reveal">
-          <h2 class="skill-group-title">Web Technologies <span>Supporting</span></h2>
+          <h2 class="skill-group-title">Web and mobile</h2>
           <div class="skills-list">
             <div class="skill-row">
               <div class="skill-name">HTML / CSS</div>
-              <div class="skill-note">Enough to build this site by hand, which is how it was built.</div>
-              <div class="skill-row-tags">
-                <span class="tag">Semantic HTML</span><span class="tag">Responsive</span>
-              </div>
+              <div class="skill-note">Enough to build this site by hand.</div>
+              <div class="tags"><span class="tag">Semantic HTML</span><span class="tag">Responsive</span></div>
             </div>
             <div class="skill-row">
               <div class="skill-name">JavaScript (ES6+)</div>
-              <div class="skill-note">Vanilla for the front of things: fetch, DOM, no framework unless the job actually needs one.</div>
+              <div class="skill-note">Vanilla, for fetch and DOM work. No framework unless the job needs one.</div>
             </div>
             <div class="skill-row">
               <div class="skill-name">Bootstrap</div>
-              <div class="skill-note">For internal tools that need to look decent by Friday.</div>
+              <div class="skill-note">For internal tools and admin dashboards.</div>
             </div>
             <div class="skill-row">
               <div class="skill-name">Laravel / PHP</div>
-              <div class="skill-note">The Qodyra year: an UMKM e-commerce backend with Xendit payments, learned from zero on the job.</div>
+              <div class="skill-note">Learned from zero at Qodyra, for an UMKM e-commerce backend with Xendit payments.</div>
             </div>
             <div class="skill-row">
               <div class="skill-name">Xamarin</div>
-              <div class="skill-note">Took Bukopinet from web to mobile with it — the app, the API behind it, and the dashboards around it.</div>
+              <div class="skill-note">Bukopinet Mobile: the app, plus the API and dashboards around it.</div>
             </div>
           </div>
         </div>
@@ -217,9 +201,9 @@
   </main>
 
   <footer>
-    <div class="footer-copy">© 2026 <span>Galih Priyambodho</span></div>
+    <span>© 2026 Galih Priyambodho</span>
     <a href="../docs/CV_Galih_Priyambodho.pdf" class="footer-cv" download>Download CV (PDF)</a>
-    <div class="footer-loc">Cikarang, West Java, Indonesia</div>
+    <span>Cikarang, West Java, Indonesia</span>
   </footer>
   <script src="../assets/js/main.js"></script>
 </body>

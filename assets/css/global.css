@@ -1,29 +1,39 @@
 /* ═══════════════════════════════
    GALIH PORTFOLIO — global.css
-   Clean Editorial Minimal Theme
+   Warm paper, ink, one rust accent
 ═══════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..500&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500&display=swap');
 
 :root {
   --bg:         #f7f5f1;
   --bg-soft:    #efede8;
-  --bg-card:    #ffffff;
+  --bg-card:    #fffefb;
   --ink:        #1a1814;
-  --ink-mid:    #6b6760;
-  --ink-faint:  #737067; /* kontras 4.55:1 di atas --bg, aman WCAG AA untuk label kecil */
-  --accent:     #b1521f; /* kontras 4.71:1 di atas --bg, aman untuk teks mono kecil */
+  --ink-mid:    #57534c; /* 7.2:1 di atas --bg */
+  --ink-faint:  #737067; /* 4.55:1 di atas --bg, batas bawah AA untuk label */
+  --accent:     #b1521f; /* 4.71:1 di atas --bg */
   --accent-soft:#f0e4db;
-  --border:     #e2dfd9;
+  --border:     rgba(26, 24, 20, 0.1);
+  --border-strong: rgba(26, 24, 20, 0.18);
   --green:      #2d6a4f;
-  --radius:     4px;
-  --shadow:     0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
-  --shadow-md:  0 2px 8px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.06);
+  --red:        #a4161a;
+
+  --radius-sm:  4px;
+  --radius:     8px;
+  --radius-lg:  12px;
   /* Bayangan offset gaya cetakan — pengganti drop-shadow blur generik */
   --shadow-print: 4px 4px 0 var(--accent-soft);
+
   --font-display: 'Fraunces', Georgia, serif;
-  --font-body:    var(--font-body);
-  --font-mono:    var(--font-mono);
+  --font-body:    'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono:    'DM Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --fast: 160ms;
+  --slow: 480ms;
+
+  --edge: 64px; /* margin halaman */
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -41,27 +51,25 @@ html { scroll-behavior: smooth; font-size: 16px; }
 }
 .skip-link {
   position: fixed;
-  left: 16px; top: -60px;
+  left: 16px; top: -64px;
   z-index: 300;
   background: var(--ink);
   color: var(--bg);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  font-size: 0.8125rem;
   text-decoration: none;
-  padding: 10px 16px;
+  padding: 8px 16px;
   border-radius: var(--radius);
-  transition: top 0.2s;
+  transition: top var(--fast) var(--ease);
 }
 .skip-link:focus { top: 16px; }
 
-/* Indikator fokus keyboard yang jelas di semua elemen interaktif */
 a:focus-visible,
-button:focus-visible {
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 2px;
 }
 
 body {
@@ -69,217 +77,172 @@ body {
   color: var(--ink);
   font-family: var(--font-body);
   font-weight: 400;
+  font-size: 1rem;
   line-height: 1.65;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Warna seleksi teks mengikuti aksen — detail kecil yang terasa dirancang */
-::selection {
-  background: var(--accent);
-  color: var(--bg);
-}
-
-/* ── Scroll Progress ── */
-.scroll-progress {
-  position: fixed; top: 0; left: 0;
-  height: 2px; width: 0%;
-  background: var(--accent);
-  z-index: 200;
-  transition: width 0.05s;
-}
+::selection { background: var(--ink); color: var(--bg); }
 
 /* ── Navigation ── */
 nav {
-  position: fixed; top: 0; left: 0; right: 0;
+  position: sticky; top: 0;
   z-index: 100;
-  padding: 20px 60px;
+  height: 64px;
+  padding: 0 var(--edge);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background: rgba(247, 245, 241, 0.92);
-  backdrop-filter: blur(12px);
+  gap: 40px;
+  background: var(--bg);
   border-bottom: 1px solid var(--border);
-  transition: padding 0.3s;
 }
 .nav-logo {
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 1.125rem;
+  font-weight: 500;
   color: var(--ink);
   text-decoration: none;
-  letter-spacing: -0.3px;
-}
-.nav-logo span {
-  color: var(--accent);
+  margin-right: auto;
 }
 .nav-links {
   display: flex;
-  gap: 36px;
+  gap: 32px;
   align-items: center;
 }
-.nav-links a {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 1px;
+.nav-links a,
+.nav-cv {
+  font-size: 0.9375rem;
   color: var(--ink-mid);
   text-decoration: none;
-  text-transform: uppercase;
-  transition: color 0.2s;
-  position: relative;
-}
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -2px; left: 0;
-  width: 0; height: 1px;
-  background: var(--accent);
-  transition: width 0.25s;
+  padding: 4px 0;
+  border-bottom: 1px solid transparent;
+  transition: color var(--fast) var(--ease), border-color var(--fast) var(--ease);
 }
 .nav-links a:hover,
-.nav-links a.active,
-.nav-links a[aria-current="page"] { color: var(--accent); }
-.nav-links a:hover::after,
-.nav-links a.active::after,
-.nav-links a[aria-current="page"]::after { width: 100%; }
-
-.nav-badge {
+.nav-cv:hover { color: var(--ink); }
+.nav-links a[aria-current="page"] {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+.nav-cv {
   font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 1px;
-  color: var(--green);
-  background: rgba(45, 106, 79, 0.1);
-  border: 1px solid rgba(45, 106, 79, 0.2);
-  padding: 4px 10px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  font-size: 0.8125rem;
+  padding: 4px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  color: var(--ink);
 }
-.badge-dot {
-  width: 5px; height: 5px;
-  background: var(--green);
-  border-radius: 50%;
-  animation: blink 2s infinite;
-}
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.3; }
-}
+.nav-cv:hover { border-color: var(--ink); }
 
 /* ── Section Layout ── */
 section {
-  padding: 96px 60px;
+  padding: 96px var(--edge);
   position: relative;
-}
-.section-label {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 3px;
-  color: var(--accent);
-  text-transform: uppercase;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.section-label::after {
-  content: '';
-  flex: 1;
-  max-width: 40px;
-  height: 1px;
-  background: var(--accent);
-  opacity: 0.4;
 }
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 500;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 400;
   color: var(--ink);
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  margin-bottom: 48px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 40px;
 }
+
+/* ── Signature: garis titik ala struk (label ....... nilai) ── */
+.leader {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+.leader > :first-child { color: var(--ink-faint); white-space: nowrap; }
+.leader > .dots {
+  flex: 1;
+  min-width: 16px;
+  border-bottom: 1px dotted var(--border-strong);
+  transform: translateY(-4px);
+}
+.leader > :last-child { color: var(--ink); text-align: right; }
 
 /* ── Footer ── */
 footer {
-  padding: 32px 60px;
+  padding: 32px var(--edge);
   border-top: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.footer-copy {
+  gap: 16px;
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 1px;
-  color: var(--ink-faint);
-}
-.footer-copy span { color: var(--accent); }
-.footer-loc {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 1px;
+  font-size: 0.8125rem;
   color: var(--ink-faint);
 }
 .footer-cv {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
   color: var(--ink-mid);
-  text-decoration: none;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 1px;
-  transition: color 0.2s, border-color 0.2s;
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 4px;
+  transition: color var(--fast) var(--ease), text-decoration-color var(--fast) var(--ease);
 }
-.footer-cv:hover { color: var(--accent); border-color: var(--accent); }
+.footer-cv:hover { color: var(--accent); text-decoration-color: var(--accent); }
 
 /* ── Buttons ── */
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 13px 28px;
+  height: 48px;
+  padding: 0 24px;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
   border-radius: var(--radius);
   text-decoration: none;
-  transition: all 0.25s;
   cursor: pointer;
-  border: none;
+  border: 1px solid transparent;
+  transition: background-color var(--fast) var(--ease), border-color var(--fast) var(--ease),
+              color var(--fast) var(--ease), box-shadow var(--fast) var(--ease), transform var(--fast) var(--ease);
 }
-.btn-primary {
-  background: var(--ink);
-  color: var(--bg);
-}
-.btn-primary:hover {
-  background: var(--accent);
-  box-shadow: var(--shadow-print);
-}
+.btn-primary { background: var(--ink); color: var(--bg); }
+.btn-primary:hover { background: #3a362f; box-shadow: var(--shadow-print); }
 .btn-outline {
   background: transparent;
   color: var(--ink);
-  border: 1px solid var(--border);
+  border-color: var(--border-strong);
 }
-.btn-outline:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  box-shadow: var(--shadow-print);
-}
-.btn:active { transform: translate(2px, 2px); box-shadow: none; }
+.btn-outline:hover { border-color: var(--ink); }
+.btn:active { transform: scale(0.98); box-shadow: none; }
+.btn:disabled { cursor: progress; opacity: 0.8; }
 
-/* ── Fade-in animations ──
+/* ── Tag: label teknologi, teks mono tenang ── */
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--ink-mid);
+}
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* ── Masuk saat scroll ──
    Hanya disembunyikan kalau JS aktif (html.js dipasang main.js),
    supaya konten tetap terlihat tanpa JavaScript. */
 html.js .reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(12px);
+  transition: opacity var(--slow) var(--ease), transform var(--slow) var(--ease);
 }
-html.js .reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+html.js .reveal.visible { opacity: 1; transform: none; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
 }
 
 /* ── Reduced motion ── */
@@ -294,16 +257,16 @@ html.js .reveal.visible {
 }
 
 /* ── Responsive ── */
-@media (max-width: 768px) {
-  nav { padding: 16px 24px; }
-  section { padding: 72px 24px; }
-  footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+@media (max-width: 900px) {
+  :root { --edge: 24px; }
+  section { padding: 72px var(--edge); }
+  nav { gap: 24px; }
   .nav-links { gap: 20px; }
-  .nav-badge { display: none; }
+  footer { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
 
-/* Layar sempit: nav dibiarkan wrap supaya link tidak terpotong */
-@media (max-width: 430px) {
-  nav { flex-wrap: wrap; justify-content: center; row-gap: 8px; }
-  .nav-links { width: 100%; justify-content: center; gap: 16px; }
+@media (max-width: 560px) {
+  nav { height: auto; flex-wrap: wrap; padding-block: 12px; row-gap: 8px; }
+  .nav-links { order: 3; width: 100%; gap: 20px; }
+  .nav-links a, .nav-cv { font-size: 0.875rem; }
 }
