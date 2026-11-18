@@ -10,7 +10,7 @@ Tech recruiters, hiring managers, and potential freelance clients (Indonesia + i
 
 ## Product Purpose
 
-Personal portfolio of Galih Priyambodho — Backend & Database Engineer, 7+ years (since 2018), fintech-heavy .NET/SQL work in Indonesia. Success = a recruiter believes the experience is real and reaches out via the contact form or email.
+Personal portfolio of Galih Priyambodho — Software Engineer (backend & database focus), 7+ years (since 2018), fintech-heavy .NET/SQL work in Indonesia. Success = a recruiter believes the experience is real and reaches out via the contact form or email.
 
 ## Brand Personality
 
