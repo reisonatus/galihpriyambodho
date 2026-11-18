@@ -20,3 +20,7 @@ Gemfile.lock
 # Local-only files, not for deploy
 docs/CV_Galih_Priyambodho_original_backup.pdf
 .impeccable/
+docs/app.originality.ai_report_*.pdf
+
+# Crash dumps from Git Bash / MSYS
+*.stackdump
