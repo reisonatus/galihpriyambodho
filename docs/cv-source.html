@@ -84,6 +84,10 @@
     <ul>
       <li>Re-platforming the product interfaces and Octopus, the company's transaction switching core, from Windows and .NET Framework to .NET Core on Linux and Docker.</li>
       <li>Maintain the PayAja and BayarBayar payment platforms: transaction APIs, web dashboards, and the issues customer service escalates.</li>
+      <li>Building a .NET 10 bridge between Octopus (ISO 8583) and a partner bank's BI-FAST API over SNAP BI, with RSA-SHA256/HMAC-SHA512 request signing and log redaction for secrets and card data.</li>
+      <li>Building the backend of a white-label agent banking app on SNAP BI (.NET 10 clean architecture, React web, Android via Capacitor).</li>
+      <li>Rewriting the BayarBayar EDC app (TypeScript on Topwise terminals) into a card-only Mini ATM on a new transaction host, with persisted reversals and reboot-safe trace numbers.</li>
+      <li>Audited QRIS and virtual account balance flows and fixed race conditions with ledger locking and idempotency.</li>
       <li>Onboard new suppliers (PLN, telco, e-money) into Octopus, configuring their products and fees.</li>
       <li>Tune SQL Server and PostgreSQL queries through indexing and execution-plan analysis.</li>
       <li>Use AI-assisted development (Claude Code) in daily work, from implementation to technical documentation.</li>
@@ -132,8 +136,10 @@
 
   <h2>Key Projects</h2>
   <div class="proj"><strong>PayAja</strong> <span class="muted">(2020–2024, live)</span>: closed-loop wallet for community networks (nature schools, pesantren, cooperatives). Built the transaction API, then the web dashboard. .NET Core, PostgreSQL.</div>
-  <div class="proj"><strong>BayarBayar</strong> <span class="muted">(2024, active)</span>: grew out of PayAja Bisnis, which connected the wallet to EDC/MiniATM devices. Still maintained by me. .NET Core.</div>
+  <div class="proj"><strong>BayarBayar</strong> <span class="muted">(2024–present, active)</span>: grew out of PayAja Bisnis, which connected the wallet to EDC/MiniATM devices. Now being turned into a card-only Mini ATM on the terminal. .NET Core, TypeScript.</div>
+  <div class="proj"><strong>BI-FAST bridge over SNAP</strong> <span class="muted">(2026, in progress)</span>: ISO 8583 from the Octopus switch to a partner bank's BI-FAST SNAP API and back; signed requests, frozen legacy switch contract. .NET 10.</div>
   <div class="proj"><strong>Octopus re-platform</strong> <span class="muted">(2022–present)</span>: moving the transaction switching core and its product interfaces from .NET Framework on Windows to .NET Core on Linux and Docker.</div>
+  <div class="proj"><strong>Agent banking app on SNAP</strong> <span class="muted">(2026, in progress)</span>: white-label app for bank agents; the bank is the single source of truth for balances. .NET 10, React, Capacitor.</div>
   <div class="proj"><strong>Bukopinet and Bukopinet Mobile</strong> <span class="muted">(2018–2021)</span>: live PPOB application on ASP.NET; added products end to end, then built the Xamarin app, its API, the admin dashboard, and the partner management web. ASP.NET, Xamarin.</div>
 
   <h2>Education</h2>
@@ -153,11 +159,11 @@
   </div>
 
   <h2>Technical Skills</h2>
-  <div class="skill-line"><strong>Backend:</strong> C#, .NET Core, ASP.NET Core, .NET Framework, Web API, Entity Framework Core, LINQ, MVC, WCF, Xamarin, REST API design, background jobs and scheduling</div>
+  <div class="skill-line"><strong>Backend:</strong> C#, .NET Core, .NET 10, ASP.NET Core, .NET Framework, Web API, Entity Framework Core, LINQ, MVC, WCF, Xamarin, REST API design, background jobs and scheduling (Quartz.NET), xunit, Testcontainers</div>
   <div class="skill-line"><strong>Databases:</strong> SQL Server, T-SQL, stored procedures, indexing, query optimization, execution plans, PostgreSQL, PL/pgSQL, partitioning, MongoDB, SQL/NoSQL data consistency</div>
-  <div class="skill-line"><strong>Payments domain:</strong> payment gateway integration (banks, aggregators, Xendit), PPOB billing systems, closed-loop wallets, EDC/MiniATM terminal backends, reconciliation and data integrity, switching core supplier onboarding</div>
-  <div class="skill-line"><strong>Tooling and process:</strong> Docker, Linux, legacy re-platforming, AI-assisted development (Claude Code), Swagger/OpenAPI, Git, Azure DevOps, Trello, Visual Studio, VS Code, ISO 9001:2015 workflow, technical documentation and PRDs</div>
-  <div class="skill-line"><strong>Web:</strong> HTML, CSS, JavaScript (ES6+), Bootstrap, Laravel/PHP</div>
+  <div class="skill-line"><strong>Payments domain:</strong> ISO 8583, SNAP BI (BI-FAST, RSA/HMAC request signing), payment gateway integration (banks, aggregators, Xendit), PPOB billing systems, closed-loop wallets, EDC/MiniATM terminal backends, reconciliation and data integrity, switching core supplier onboarding</div>
+  <div class="skill-line"><strong>Tooling and process:</strong> Docker, Linux, Windows Server, IIS, PowerShell, legacy re-platforming, AI-assisted development (Claude Code), Swagger/OpenAPI, Git, Azure DevOps, Trello, Visual Studio, VS Code, ISO 9001:2015 workflow, technical documentation and PRDs</div>
+  <div class="skill-line"><strong>Web:</strong> TypeScript, React, HTML, CSS, JavaScript (ES6+), Bootstrap, Laravel/PHP</div>
 
   <h2>Languages</h2>
   <div class="skill-line">Indonesian (native) &nbsp;|&nbsp; English (professional working proficiency)</div>

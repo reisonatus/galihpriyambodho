@@ -36,7 +36,7 @@
           <div class="skills-list">
             <div class="skill-row">
               <div class="skill-name">C# / .NET Core</div>
-              <div class="skill-note">Since 2018, starting on a live PPOB codebase on day one. Payment APIs and transaction flows.</div>
+              <div class="skill-note">Since 2018, starting on a live PPOB codebase on day one. Payment APIs and transaction flows, and .NET 10 for the newest services.</div>
               <div class="tags"><span class="tag">ASP.NET Core</span><span class="tag">Web API</span><span class="tag">LINQ</span><span class="tag">EF Core</span></div>
             </div>
             <div class="skill-row">
@@ -59,11 +59,11 @@
             </div>
             <div class="skill-row">
               <div class="skill-name">Transaction Systems</div>
-              <div class="skill-note">Payment flows where every record has to be accounted for: idempotency, reconciliation, audit trails.</div>
+              <div class="skill-note">Payment flows where every record has to be accounted for: idempotency, reconciliation, audit trails. Recently traced QRIS and virtual account balance flows end to end and fixed the race conditions I found with ledger locking.</div>
             </div>
             <div class="skill-row">
               <div class="skill-name">Background Jobs &amp; Automation</div>
-              <div class="skill-note">Scheduled jobs that process transactions so nobody has to run them by hand.</div>
+              <div class="skill-note">Scheduled jobs that process transactions so nobody has to run them by hand, mostly on Quartz.NET.</div>
             </div>
           </div>
         </div>
@@ -109,6 +109,15 @@
           <h2 class="skill-group-title">Payments</h2>
           <div class="skills-list">
             <div class="skill-row">
+              <div class="skill-name">ISO 8583</div>
+              <div class="skill-note">The message format between Octopus and everything around it: MTIs, data elements, reversals, trace and batch numbers.</div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-name">SNAP BI</div>
+              <div class="skill-note">Bank Indonesia's open API standard. Request signing with RSA-SHA256 and HMAC-SHA512, where one byte out of place fails the signature. Used for BI-FAST transfers and an agent banking app.</div>
+              <div class="tags"><span class="tag">BI-FAST</span><span class="tag">RSA-SHA256</span><span class="tag">HMAC-SHA512</span></div>
+            </div>
+            <div class="skill-row">
               <div class="skill-name">Payment Gateway Integration</div>
               <div class="skill-note">Connecting apps to banks, aggregators, and Xendit, and handling whatever they send back.</div>
             </div>
@@ -135,12 +144,21 @@
               <div class="skill-note">Where the current re-platform is headed: .NET Framework services rebuilt on .NET Core to run in containers on Linux.</div>
             </div>
             <div class="skill-row">
+              <div class="skill-name">Windows Server &amp; IIS</div>
+              <div class="skill-note">Where most of our services run. Wrote the PowerShell backup and restore scripts for IIS sites, SSL bindings, and PostgreSQL during a bare-metal server migration.</div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-name">Testing</div>
+              <div class="skill-note">xunit and FluentAssertions for unit tests, Testcontainers for integration tests against a real database.</div>
+              <div class="tags"><span class="tag">xunit</span><span class="tag">Testcontainers</span></div>
+            </div>
+            <div class="skill-row">
               <div class="skill-name">Legacy Migration</div>
               <div class="skill-note">Moving systems that can't go down, with staged cutovers and a rollback plan.</div>
             </div>
             <div class="skill-row">
               <div class="skill-name">AI-Assisted Development</div>
-              <div class="skill-note">I use Claude Code every day. It does a lot of the typing, and I review what it writes.</div>
+              <div class="skill-note">I use Claude Code every day. I set up my own seven-step workflow for it: research, user story, technical brief, backend, frontend, tests, final review, with my approval between the early steps. It does a lot of the typing, and I review what it writes.</div>
             </div>
             <div class="skill-row">
               <div class="skill-name">Visual Studio &amp; VS Code</div>
@@ -180,6 +198,11 @@
             <div class="skill-row">
               <div class="skill-name">JavaScript (ES6+)</div>
               <div class="skill-note">Vanilla, for fetch and DOM work. No framework unless the job needs one.</div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-name">TypeScript</div>
+              <div class="skill-note">The BayarBayar Mini ATM app runs on a Topwise EDC terminal in TypeScript, with a 320×210 screen and a physical keypad. Also the language of a React web app on the agent banking project.</div>
+              <div class="tags"><span class="tag">React</span><span class="tag">EDC terminal</span></div>
             </div>
             <div class="skill-row">
               <div class="skill-name">Bootstrap</div>

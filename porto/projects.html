@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Galih Priyambodho — Projects</title>
-  <meta name="description" content="PayAja, BayarBayar, Bukopinet, and the Octopus switching core: payment systems built and maintained at Arranet in Indonesia.">
+  <meta name="description" content="PayAja, BayarBayar, a BI-FAST bridge over SNAP, the Octopus switching core, and Bukopinet: payment systems built and maintained at Arranet in Indonesia.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a1814'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' fill='%23f7f5f1' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="../assets/css/global.css">
   <link rel="stylesheet" href="../assets/css/pages.css">
@@ -45,13 +45,25 @@
 
         <article class="project reveal">
           <div class="project-meta">
-            <span class="project-year">2024</span>
+            <span class="project-year">2024 – now</span>
             <span class="project-status status-active">Active</span>
           </div>
           <div>
             <h2 class="project-name">BayarBayar</h2>
-            <p class="project-desc">Started as PayAja Bisnis, the piece that connected the wallet to MiniATM devices, and grew into its own product. Anything that breaks in it still comes to me.</p>
-            <div class="tags"><span class="tag">.NET Core</span><span class="tag">MiniATM / EDC</span></div>
+            <p class="project-desc">Started as PayAja Bisnis, the piece that connected the wallet to MiniATM devices, and grew into its own product. Anything that breaks in it still comes to me. Right now I'm turning the app on the Topwise EDC terminal into a card-only Mini ATM (balance check, cash withdrawal, card transfer) on a new transaction host. That app is TypeScript running on the terminal itself, so reversals and trace numbers have to survive a reboot.</p>
+            <div class="tags"><span class="tag">.NET Core</span><span class="tag">TypeScript</span><span class="tag">MiniATM / EDC</span></div>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <div class="project-meta">
+            <span class="project-year">2026</span>
+            <span class="project-status status-active">In progress</span>
+          </div>
+          <div>
+            <h2 class="project-name">BI-FAST bridge over SNAP</h2>
+            <p class="project-desc">A .NET 10 worker service that sits between Octopus and a partner bank's BI-FAST API. It takes ISO 8583 messages from the switch, builds and signs SNAP requests (RSA-SHA256 for the access token, HMAC-SHA512 per request), and maps the bank's answer back to ISO 8583. The switch side is legacy and frozen, so the bridge adapts to it, never the other way round. Secrets, tokens, signatures and card numbers are scrubbed from every log line.</p>
+            <div class="tags"><span class="tag">.NET 10</span><span class="tag">ISO 8583</span><span class="tag">SNAP BI</span><span class="tag">BI-FAST</span></div>
           </div>
         </article>
 
@@ -64,6 +76,18 @@
             <h2 class="project-name">Octopus re-platform</h2>
             <p class="project-desc">Octopus is Arranet's switching core: supplier products (PLN, telco, e-money) come in, go through a product interface, and come out in our apps. It and the product interfaces were written for Windows and .NET Framework. I'm moving them to .NET Core so they can run on Linux in Docker.</p>
             <div class="tags"><span class="tag">.NET Framework</span><span class="tag">.NET Core</span><span class="tag">Linux</span><span class="tag">Docker</span></div>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <div class="project-meta">
+            <span class="project-year">2026</span>
+            <span class="project-status status-active">In progress</span>
+          </div>
+          <div>
+            <h2 class="project-name">Agent banking app on SNAP</h2>
+            <p class="project-desc">A white-label app for bank agents, connected to a partner bank through SNAP BI. The bank is the only source of truth for balances; the app keeps no wallet of its own. Backend in .NET 10 with a strict clean-architecture split, a React web app, and an Android shell built with Capacitor so it can talk to EDC devices over Bluetooth.</p>
+            <div class="tags"><span class="tag">.NET 10</span><span class="tag">SNAP BI</span><span class="tag">React</span><span class="tag">Capacitor</span></div>
           </div>
         </article>
 
